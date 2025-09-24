@@ -7,6 +7,7 @@ tickers = yf.Tickers(["MSFT"])
 
 # get all stock info
 #msft.info
+print(msft.eps_revisions)
 
 # get historical market data
 #hist = msft.history(period="1mo")
@@ -78,7 +79,6 @@ news = yf.Search("Google", news_count=10).news
 
 # get list of related research
 research = yf.Search("apple", include_research=True).research
-print(research)
 
 # Get All
 all = yf.Lookup("AAPL").all
