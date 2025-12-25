@@ -1,0 +1,13 @@
+{
+  "name": "earnings-calendar-api",
+  "version": "1.0.0",
+  "description": "Earnings calendar subscription service",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "node-fetch": "^2.6.7"
+  }
+}

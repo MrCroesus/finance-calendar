@@ -1,3 +1,5 @@
+# https://www.projectpro.io/article/stock-price-prediction-using-machine-learning-project/571
+
 import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt

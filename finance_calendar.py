@@ -1,6 +1,4 @@
-import datetime
 import os.path
-
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -9,6 +7,11 @@ from googleapiclient.errors import HttpError
 
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+
+import yfinance as yf
+
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
@@ -104,7 +107,10 @@ def process_FOMC_meeting(year, dateTime):
   # parse day
   days = day.split('-')
   start_day = '0' + days[0] if len(days[0]) == 1 else days[0]
-  end_day = '0' + days[1] if len(days[1]) == 1 else days[1]
+  if len(days) == 1:
+    end_day = start_day
+  else:
+    end_day = '0' + days[1] if len(days[1]) == 1 else days[1]
 
   return starred, year + '-' + start_month + '-' + start_day + 'T00:00:00-05:00', year + '-' + end_month + '-' + end_day + 'T23:59:59-05:00'
   
@@ -159,12 +165,13 @@ def process_BEA_release_date(date, time):
   # process hour and minutes
   hour, minute = clock_time.split(':')
   hour = str(int(hour) + 12) if AMorPM == 'pm' else hour
+  hour = '0' + hour if len(hour) == 1 else hour
   minute = '0' + minute if len(minute) == 1 else minute
 
   return year + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':00-06:00', year + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':00-06:00'
   
   
-def dateTime_equals(dateTime1, dateTime2):
+def dateTime_equals(dateTime1, tz1, dateTime2, tz2):
   # parse dates and Times
   date1, Time1 = dateTime1.split('T')
   date2, Time2 = dateTime2.split('T')
@@ -174,8 +181,35 @@ def dateTime_equals(dateTime1, dateTime2):
   year2, month2, day2 = date2.split('-')
   
   # parse timezones and times
-  timezone1, time1 = Time1.split('-')
-  timezone2, time2 = Time2.split('-')
+  time1, timezone1 = Time1.split('-')
+  time2, timezone2 = Time2.split('-')
+
+  # parse hours, minutes, and seconds
+  hour1, minute1, second1 = time1.split(':')
+  hour2, minute2, second2 = time2.split(':')
+#  
+#  # parse timezone hours and minutes
+#  tz_hour1, tz_minute1 = timezone1.split(':')
+#  tz_hour2, tz_minute2 = timezone2.split(':')
+#  
+#  # account for timezone hour
+#  hour1 = int(hour1) + int(tz_hour1)
+#  hour2 = int(hour2) + int(tz_hour2)
+#  
+#  # overflow hours into days
+#  day1 = int(day1)
+#  day2 = int(day2)
+#  if hour1 >= 24:
+#    hour1 -= 24
+#    day1 += 1
+#  if hour2 >= 24:
+#    hour2 -= 24
+#    day2 += 1
+#      
+#  return year1 == year2 and month1 == month2 and day1 == day2 and hour1 == hour2 and minute1 == minute2 and second1 == second2
+  dateTime1 = datetime(int(year1), int(month1), int(day1), int(hour1), int(minute1), int(second1), tzinfo=ZoneInfo(tz1))
+  dateTime2 = datetime(int(year2), int(month2), int(day2), int(hour2), int(minute2), int(second2), tzinfo=ZoneInfo(tz2))
+  return abs((dateTime1 - dateTime2).total_seconds()) <= 3600
   
 
 def new_event(service, summary, description, start_dateTime, end_dateTime):
@@ -206,37 +240,36 @@ if __name__ == "__main__":
     service.events()
     .list(
         calendarId="c_f33c38db2bbb06fd8e46447a560fc94d9d212b70c9dea85a75092342cff9b046@group.calendar.google.com",
-        timeMin="2024-01-01T00:00:00Z",
-        timeMax="2024-12-31T23:59:59Z",
+        timeMin="2026-01-01T00:00:00Z",
+        timeMax="2026-12-31T23:59:59Z",
         maxResults=2500,
-        timeZone="-05:00",
+        timeZone="-08:00",
         singleEvents=True,
         orderBy="startTime",
     )
     .execute()
   )
   finance_events = finance_events_result.get("items", [])
-  finance_event_starts = [finance_event["start"]["dateTime"] for finance_event in finance_events]
 
   # BLS (unemployment and inflation) info is added by URL: https://www.bls.gov/schedule/news_release/bls.ics
   # located: https://www.bls.gov/schedule/news_release/cpi.htm
 
   # FOMC (interest rate) info is added manually: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
-  FOMC_meetings = ["January30-31",
-  "March19-20*",
-  "Apr/May30-1",
-  "June11-12*",
-  "July30-31",
-  "September17-18*",
-  "November6-7",
-  "December17-18*"]
+  FOMC_meetings = ["January27-28",
+  "March17-18*",
+  "April28-29",
+  "June16-17*",
+  "July28-29",
+  "September15-16*",
+  "October27-28",
+  "December8-9*"]
 
   for FOMC_meeting in FOMC_meetings:
-    starred, start_dateTime, end_dateTime = process_FOMC_meeting('2024', FOMC_meeting)
+    starred, start_dateTime, end_dateTime = process_FOMC_meeting('2026', FOMC_meeting)
 
-    if start_dateTime not in finance_event_starts:
+    if not any([dateTime_equals(start_dateTime, "US/Eastern", finance_event["start"]["dateTime"], "US/Pacific") for finance_event in finance_events]):
       summary = "FOMC Meeting"
-      description =  "Interest rate changes & Summary of Economic Projections" if starred else "Interest rate changes"
+      description = "Interest rate changes & Summary of Economic Projections" if starred else "Interest rate changes"
 
       new_event(service, summary, description, start_dateTime, end_dateTime)
 
@@ -248,8 +281,19 @@ if __name__ == "__main__":
   for day, time in zip(days, times):
     start_dateTime, end_dateTime = process_BEA_release_date(day, time)
 
-    if start_dateTime not in finance_event_starts:
+    if not any([dateTime_equals(start_dateTime, "US/Central", finance_event["start"]["dateTime"], "US/Pacific") for finance_event in finance_events]):
       summary = "BEA Release Date"
-      description =  "GDP estimates released"
+      description = "GDP estimates released"
 
       new_event(service, summary, description, start_dateTime, end_dateTime)
+    
+  ticks = ["NVDA", "AAPL", "GOOG", "MSFT", "AMZN", "META", "AVGO", "TSLA", "TSM", "WMT", "JPM", "V", "ORCL", "NFLX", "COST", "AMD", "INTC", "BA"]
+  for tick in ticks:
+    ticker = yf.Ticker(tick)
+    earnings_date = str(ticker.calendar['Earnings Date'][0])
+
+    if not any([dateTime_equals(earnings_date + "T00:00:00-08:00", "US/Pacific", finance_event["start"]["dateTime"], "US/Pacific") and tick in finance_event["summary"] for finance_event in finance_events]):
+      summary = tick + " Earnings"
+      description = "Earnings for " + tick
+      
+      new_event(service, summary, description, earnings_date + "T00:00:00", earnings_date + "T23:59:59")

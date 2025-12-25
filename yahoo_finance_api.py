@@ -7,7 +7,7 @@ tickers = yf.Tickers(["MSFT"])
 
 # get all stock info
 #msft.info
-print(msft.eps_revisions)
+#print(msft.eps_revisions)
 
 # get historical market data
 #hist = msft.history(period="1mo")
@@ -54,7 +54,7 @@ print(msft.eps_revisions)
 #
 ## Show future and historic earnings dates, returns at most next 4 quarters and last 8 quarters by default.
 ## Note: If more are needed use msft.get_earnings_dates(limit=XX) with increased limit argument.
-#msft.earnings_dates
+print(msft.calendar)
 #
 ## show ISIN code - *experimental*
 ## ISIN = International Securities Identification Number
