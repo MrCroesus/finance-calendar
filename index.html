@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stock Search</title>
+
+  <!-- Load Fuse safely -->
+  <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #f7f7f7;
+    }
+
+    .container {
+      max-width: 520px;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      width: 100%;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      max-height: 260px;
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .option {
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .option.active,
+    .option:hover {
+      background: #f1f5f9;
+    }
+
+    .ticker {
+      font-weight: 700;
+    }
+
+    .company {
+      color: #555;
+      margin-left: 12px;
+      flex: 1;
+      text-align: right;
+    }
+
+    .pill-container {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .pill button {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>S&P 500 Search</h2>
+    <input id="search" placeholder="Search ticker or company..." />
+    <div id="dropdown" class="dropdown" hidden></div>
+    <div id="pillContainer" class="pill-container"></div>
+  </div>
+
+  <script>
+    const input = document.getElementById("search");
+    const dropdown = document.getElementById("dropdown");
+    const pillContainer = document.getElementById("pillContainer");
+
+    let fuse = null;
+    let results = [];
+    let activeIndex = -1;
+
+    // ---------------- Debounce
+    function debounce(fn, delay = 300) {
+      let t;
+      return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(() => fn(...args), delay);
+      };
+    }
+
+    // ---------------- Load S&P 500 (CORS-safe)
+    fetch("https://rawcdn.githack.com/datasets/s-and-p-500-companies/master/data/constituents.json")
+      .then(r => r.json())
+      .then(data => {
+        fuse = new Fuse(
+          data.map(s => ({
+            ticker: s.Symbol,
+            name: s.Name
+          })),
+          {
+            keys: ["ticker", "name"],
+            threshold: 0.35
+          }
+        );
+      })
+      .catch(err => {
+        console.error("Failed to load stock data", err);
+      });
+
+    // ---------------- Pills
+    function addPill(stock) {
+      if ([...pillContainer.children].some(p => p.dataset.ticker === stock.ticker)) return;
+
+      const pill = document.createElement("div");
+      pill.className = "pill";
+      pill.dataset.ticker = stock.ticker;
+
+      pill.innerHTML = `<span>${stock.ticker}</span><button>✕</button>`;
+      pill.querySelector("button").onclick = () => pill.remove();
+
+      pillContainer.appendChild(pill);
+    }
+
+    // ---------------- Render dropdown
+    function render() {
+      dropdown.innerHTML = "";
+      activeIndex = -1;
+
+      if (!results.length) {
+        dropdown.hidden = true;
+        return;
+      }
+
+      results.forEach((r, i) => {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.innerHTML = `
+          <span class="ticker">${r.item.ticker}</span>
+          <span class="company">${r.item.name}</span>
+        `;
+        div.onclick = () => {
+          addPill(r.item);
+          close();
+        };
+        dropdown.appendChild(div);
+      });
+
+      dropdown.hidden = false;
+    }
+
+    function close() {
+      dropdown.hidden = true;
+      input.value = "";
+      results = [];
+    }
+
+    // ---------------- Search
+    const handleSearch = debounce(() => {
+      if (!fuse) return;
+
+      const q = input.value.trim();
+      if (!q) {
+        dropdown.hidden = true;
+        return;
+      }
+
+      results = fuse.search(q).slice(0, 8);
+      render();
+    }, 300);
+
+    input.addEventListener("input", handleSearch);
+
+    // ---------------- Keyboard nav
+    input.addEventListener("keydown", e => {
+      if (dropdown.hidden) return;
+
+      const opts = dropdown.children;
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        activeIndex = (activeIndex + 1) % opts.length;
+      }
+
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        activeIndex = (activeIndex - 1 + opts.length) % opts.length;
+      }
+
+      if (e.key === "Enter" && activeIndex >= 0) {
+        e.preventDefault();
+        addPill(results[activeIndex].item);
+        close();
+      }
+
+      if (e.key === "Escape") close();
+
+      [...opts].forEach((o, i) =>
+        o.classList.toggle("active", i === activeIndex)
+      );
+    });
+
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".container")) close();
+    });
+  </script>
+</body>
+</html>
