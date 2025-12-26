@@ -12,8 +12,70 @@ export default function StockTickerManager() {
   const [isLoadingStocks, setIsLoadingStocks] = useState(true);
   const dropdownRef = useRef(null);
   
-  // Replace with your Finnhub API key (get free at https://finnhub.io)
+  // Replace with your API keys
   const FINNHUB_API_KEY = 'd56v729r01qkvkasp1tgd56v729r01qkvkasp1u0';
+  const SUPABASE_URL = 'https://dzeiarbsmzuhocvplxpa.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6ZWlhcmJzbXp1aG9jdnBseHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY2OTYxMDcsImV4cCI6MjA4MjI3MjEwN30.4QRJ37gulOnlMMr1klLMuRwq5uPF_I0s3g0jMuWPvDs';
+  
+  // Initialize Supabase client (only if keys are provided)
+  const supabase = SUPABASE_URL !== 'your_supabase_url_here' && SUPABASE_ANON_KEY !== 'your_supabase_anon_key_here'
+    ? (() => {
+        // Simple Supabase client without importing the library
+        return {
+          from: (table) => ({
+            select: () => ({
+              eq: (column, value) => ({
+                single: async () => {
+                  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${column}=eq.${value}`, {
+                    headers: {
+                      'apikey': SUPABASE_ANON_KEY,
+                      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                  });
+                  const data = await res.json();
+                  return { data: data[0] || null, error: null };
+                }
+              }),
+              limit: async (count) => {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?limit=${count}`, {
+                  headers: {
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                  }
+                });
+                const data = await res.json();
+                return { data, error: null };
+              }
+            }),
+            insert: async (rows) => {
+              const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+                method: 'POST',
+                headers: {
+                  'apikey': SUPABASE_ANON_KEY,
+                  'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                  'Content-Type': 'application/json',
+                  'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify(rows)
+              });
+              return { error: res.ok ? null : await res.json() };
+            },
+            delete: () => ({
+              eq: async (column, value) => {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${column}=eq.${value}`, {
+                  method: 'DELETE',
+                  headers: {
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                  }
+                });
+                return { error: res.ok ? null : await res.json() };
+              }
+            })
+          })
+        };
+      })()
+    : null;
 
   // Common company name aliases (old names, nicknames, etc.)
   const COMPANY_ALIASES = {
@@ -46,24 +108,49 @@ export default function StockTickerManager() {
       try {
         setIsLoadingStocks(true);
         
-        // Fetch from multiple exchanges to get broader coverage
-        const exchanges = ['US', 'OTC'];  // US exchanges + OTC (international ADRs)
-        const allStockData = [];
-        
-        for (const exchange of exchanges) {
-          try {
-            const response = await fetch(
-              `https://finnhub.io/api/v1/stock/symbol?exchange=${exchange}&token=${FINNHUB_API_KEY}`
-            );
+        // Try to load from Supabase cache first (much faster!)
+        if (supabase) {
+          console.log('Attempting to load stocks from Supabase cache...');
+          
+          const { data: cacheData, error } = await supabase
+            .from('stock_cache')
+            .select()
+            .eq('cache_key', 'all_stocks')
+            .single();
+          
+          if (cacheData && !error) {
+            const cacheAge = Date.now() - new Date(cacheData.updated_at).getTime();
+            const oneDayInMs = 24 * 60 * 60 * 1000;
             
-            if (response.ok) {
-              const data = await response.json();
-              allStockData.push(...data);
+            // Use cache if less than 1 day old
+            if (cacheAge < oneDayInMs) {
+              console.log(`Loaded ${cacheData.stocks.length} stocks from Supabase cache (${Math.round(cacheAge / 1000 / 60)} minutes old)`);
+              setAllStocks(cacheData.stocks);
+              setIsLoadingStocks(false);
+              return;
+            } else {
+              console.log('Cache is stale, fetching fresh data...');
             }
-          } catch (error) {
-            console.error(`Error loading ${exchange} stocks:`, error);
+          } else {
+            console.log('No cache found, fetching from Finnhub...');
           }
         }
+        
+        // Fetch from Finnhub if no cache or cache is stale
+        console.log('Fetching stocks from Finnhub API...');
+        const exchanges = ['US', 'OTC'];
+        
+        const fetchPromises = exchanges.map(exchange =>
+          fetch(`https://finnhub.io/api/v1/stock/symbol?exchange=${exchange}&token=${FINNHUB_API_KEY}`)
+            .then(res => res.ok ? res.json() : [])
+            .catch(err => {
+              console.error(`Error loading ${exchange} stocks:`, err);
+              return [];
+            })
+        );
+        
+        const results = await Promise.all(fetchPromises);
+        const allStockData = results.flat();
         
         // Filter and deduplicate stocks
         const uniqueSymbols = new Set();
@@ -73,12 +160,10 @@ export default function StockTickerManager() {
               return false;
             }
             
-            // Skip duplicates
             if (uniqueSymbols.has(stock.symbol)) {
               return false;
             }
             
-            // Keep common stocks and ADRs
             const validTypes = ['Common Stock', 'ADR', 'GDR'];
             if (!validTypes.includes(stock.type)) {
               return false;
@@ -94,7 +179,31 @@ export default function StockTickerManager() {
           }));
         
         setAllStocks(stocks);
-        console.log(`Loaded ${stocks.length} stocks from ${exchanges.join(', ')} for searching`);
+        console.log(`Loaded ${stocks.length} stocks from Finnhub`);
+        
+        // Save to Supabase cache for next time
+        if (supabase && stocks.length > 0) {
+          console.log('Saving to Supabase cache...');
+          
+          // Delete old cache
+          await supabase.from('stock_cache').delete().eq('cache_key', 'all_stocks');
+          
+          // Insert new cache
+          const { error: insertError } = await supabase
+            .from('stock_cache')
+            .insert({
+              cache_key: 'all_stocks',
+              stocks: stocks,
+              updated_at: new Date().toISOString()
+            });
+          
+          if (insertError) {
+            console.error('Error saving cache:', insertError);
+          } else {
+            console.log('Successfully cached stocks in Supabase');
+          }
+        }
+        
       } catch (error) {
         console.error('Error loading stocks:', error);
       } finally {
