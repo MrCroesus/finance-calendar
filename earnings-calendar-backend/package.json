@@ -1,0 +1,9 @@
+{
+  "name": "earnings-calendar-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "node-fetch": "^2.6.7"
+  }
+}
