@@ -6,14 +6,15 @@ async function fetchEarningsDate(ticker) {
   try {
     console.log(`Attempting to fetch earnings for ${ticker}...`);
     
-    // Fetch calendar events using yahoo-finance2
+    // Fetch both calendar events and company name
     const result = await yahooFinance.quoteSummary(ticker, {
-      modules: ['calendarEvents']
+      modules: ['calendarEvents', 'price']
     });
     
     console.log(`Yahoo Finance response for ${ticker}:`, JSON.stringify(result, null, 2));
     
     const earnings = result.calendarEvents?.earnings;
+    const companyName = result.price?.longName || result.price?.shortName || ticker;
 
     if (earnings?.earningsDate) {
       // Yahoo Finance can return multiple dates, take the first one
@@ -22,10 +23,12 @@ async function fetchEarningsDate(ticker) {
         : earnings.earningsDate;
       
       const earningsDate = new Date(earningsDateValue);
-      console.log(`Found earnings date for ${ticker}: ${earningsDate.toISOString()}`);
+      
+      console.log(`Found earnings date for ${ticker} (${companyName}): ${earningsDate.toISOString()}`);
       
       return {
         ticker,
+        companyName,
         date: earningsDate,
         dateString: earningsDate.toISOString()
       };
@@ -61,6 +64,7 @@ async function getOrFetchTickerData(ticker) {
     console.log(`Using cached data for ${ticker}`);
     returnData = {
       ticker: cachedTicker.ticker,
+      companyName: cachedTicker.company_name || ticker,
       date: new Date(cachedTicker.earnings_date),
       dateString: cachedTicker.earnings_date
     };
@@ -85,6 +89,7 @@ async function getOrFetchTickerData(ticker) {
       .from('earnings_cache')
       .upsert({
         ticker: ticker,
+        company_name: freshData ? freshData.companyName : null,
         earnings_date: freshData ? freshData.dateString : null,
         last_updated: new Date().toISOString()
       }, {
@@ -110,6 +115,7 @@ async function refreshInBackground(ticker) {
       .from('earnings_cache')
       .upsert({
         ticker: ticker,
+        company_name: freshData ? freshData.companyName : null,
         earnings_date: freshData ? freshData.dateString : null,
         last_updated: new Date().toISOString()
       }, {
@@ -147,7 +153,7 @@ UID:${uid}
 DTSTAMP:${timestamp}
 DTSTART;VALUE=DATE:${dateStr}
 SUMMARY:${item.ticker} Earnings Report
-DESCRIPTION:Earnings report for ${item.ticker}
+DESCRIPTION:Earnings report for ${item.companyName}
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT`;
@@ -158,7 +164,7 @@ VERSION:2.0
 PRODID:-//Earnings Calendar Subscription//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:Stock Earnings Calendar
+X-WR-CALNAME:Finance Calendar
 X-WR-TIMEZONE:UTC
 X-WR-CALDESC:Earnings dates for tracked stocks
 X-PUBLISHED-TTL:P60D
