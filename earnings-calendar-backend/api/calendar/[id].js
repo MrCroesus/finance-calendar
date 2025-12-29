@@ -1,26 +1,29 @@
+// FILE: api/calendar/[id].js
 import { supabase } from '../../lib/supabase.js';
-import fetch from 'node-fetch';
+import yahooFinance from 'yahoo-finance2';
 
 async function fetchEarningsDate(ticker) {
   try {
-    const response = await fetch(
-      `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=calendarEvents`,
-      {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-      }
-    );
+    console.log(`Attempting to fetch earnings for ${ticker}...`);
+    
+    // Fetch calendar events using yahoo-finance2
+    const result = await yahooFinance.quoteSummary(ticker, {
+      modules: ['calendarEvents']
+    });
+    
+    console.log(`Yahoo Finance response for ${ticker}:`, JSON.stringify(result, null, 2));
+    
+    const earnings = result.calendarEvents?.earnings;
 
-    if (!response.ok) {
-      return null;
-    }
-
-    const data = await response.json();
-    const earnings = data.quoteSummary?.result?.[0]?.calendarEvents?.earnings;
-
-    if (earnings?.earningsDate?.[0]) {
-      const earningsDate = new Date(earnings.earningsDate[0].raw * 1000);
+    if (earnings?.earningsDate) {
+      // Yahoo Finance can return multiple dates, take the first one
+      const earningsDateValue = Array.isArray(earnings.earningsDate) 
+        ? earnings.earningsDate[0] 
+        : earnings.earningsDate;
+      
+      const earningsDate = new Date(earningsDateValue);
+      console.log(`Found earnings date for ${ticker}: ${earningsDate.toISOString()}`);
+      
       return {
         ticker,
         date: earningsDate,
@@ -28,61 +31,95 @@ async function fetchEarningsDate(ticker) {
       };
     }
 
+    console.warn(`No earnings date found for ${ticker}`);
     return null;
   } catch (error) {
-    console.error(`Error fetching ${ticker}:`, error);
+    console.error(`Error fetching ${ticker}:`, error.message);
+    
+    // If ticker not found or other error, return null
+    if (error.message.includes('Not Found') || error.message.includes('404')) {
+      console.warn(`Ticker ${ticker} not found in Yahoo Finance`);
+    }
+    
     return null;
   }
 }
 
 async function getOrFetchTickerData(ticker) {
+  // First, try to get from cache
   const { data: cachedTicker, error: fetchError } = await supabase
-    .from('ticker_cache')
+    .from('earnings_cache')
     .select('*')
     .eq('ticker', ticker)
     .single();
 
-  if (cachedTicker && !fetchError) {
+  let returnData = null;
+  let shouldRefresh = false;
+
+  if (cachedTicker && !fetchError && cachedTicker.earnings_date) {
+    // We have cached data - use it immediately
+    console.log(`Using cached data for ${ticker}`);
+    returnData = {
+      ticker: cachedTicker.ticker,
+      date: new Date(cachedTicker.earnings_date),
+      dateString: cachedTicker.earnings_date
+    };
+
+    // Check if cache is old (older than 60 days)
     const lastUpdated = new Date(cachedTicker.last_updated);
     const now = new Date();
     const daysSinceUpdate = (now - lastUpdated) / (1000 * 60 * 60 * 24);
-
-    if (daysSinceUpdate < 60) {
-      console.log(`Using cached data for ${ticker}`);
-      return cachedTicker.earnings_date ? {
-        ticker: cachedTicker.ticker,
-        date: new Date(cachedTicker.earnings_date),
-        dateString: cachedTicker.earnings_date
-      } : null;
+    
+    if (daysSinceUpdate >= 60) {
+      console.log(`Cache for ${ticker} is ${Math.round(daysSinceUpdate)} days old, will refresh in background`);
+      shouldRefresh = true;
     }
-  }
-
-  console.log(`Fetching fresh data for ${ticker}`);
-  const freshData = await fetchEarningsDate(ticker);
-
-  if (freshData) {
-    await supabase
-      .from('ticker_cache')
-      .upsert({
-        ticker: ticker,
-        earnings_date: freshData.dateString,
-        last_updated: new Date().toISOString()
-      }, {
-        onConflict: 'ticker'
-      });
   } else {
+    // No cache or cache is null - fetch synchronously
+    console.log(`No cached data for ${ticker}, fetching now...`);
+    const freshData = await fetchEarningsDate(ticker);
+    returnData = freshData;
+    
+    // Save to cache
     await supabase
-      .from('ticker_cache')
+      .from('earnings_cache')
       .upsert({
         ticker: ticker,
-        earnings_date: null,
+        earnings_date: freshData ? freshData.dateString : null,
         last_updated: new Date().toISOString()
       }, {
         onConflict: 'ticker'
       });
   }
 
-  return freshData;
+  // Trigger background refresh if needed (don't await)
+  if (shouldRefresh) {
+    refreshInBackground(ticker);
+  }
+
+  return returnData;
+}
+
+// Background refresh function - updates cache without blocking response
+async function refreshInBackground(ticker) {
+  try {
+    console.log(`Background refresh started for ${ticker}`);
+    const freshData = await fetchEarningsDate(ticker);
+    
+    await supabase
+      .from('earnings_cache')
+      .upsert({
+        ticker: ticker,
+        earnings_date: freshData ? freshData.dateString : null,
+        last_updated: new Date().toISOString()
+      }, {
+        onConflict: 'ticker'
+      });
+    
+    console.log(`Background refresh completed for ${ticker}`);
+  } catch (error) {
+    console.error(`Background refresh failed for ${ticker}:`, error);
+  }
 }
 
 function formatICSDate(date) {
@@ -97,13 +134,15 @@ function generateICS(earningsData, calendarId) {
   const timestamp = formatICSDate(now) + 'T' + 
     now.toISOString().split('T')[1].replace(/[-:]/g, '').split('.')[0] + 'Z';
 
-  const events = earningsData
-    .filter(item => item !== null)
-    .map(item => {
-      const dateStr = formatICSDate(item.date);
-      const uid = `earnings-${item.ticker}-${dateStr}-${calendarId}@earningscalendar.com`;
+  const validEvents = earningsData.filter(item => item !== null);
+  
+  console.log(`Generating calendar with ${validEvents.length} events out of ${earningsData.length} tickers`);
 
-      return `BEGIN:VEVENT
+  const events = validEvents.map(item => {
+    const dateStr = formatICSDate(item.date);
+    const uid = `earnings-${item.ticker}-${dateStr}-${calendarId}@earningscalendar.com`;
+
+    return `BEGIN:VEVENT
 UID:${uid}
 DTSTAMP:${timestamp}
 DTSTART;VALUE=DATE:${dateStr}
@@ -112,7 +151,7 @@ DESCRIPTION:Earnings report for ${item.ticker}
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
 END:VEVENT`;
-    }).join('\n');
+  }).join('\n');
 
   return `BEGIN:VCALENDAR
 VERSION:2.0
@@ -136,6 +175,8 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log(`Fetching calendar ${id}`);
+    
     const { data: calendar, error: fetchError } = await supabase
       .from('calendars')
       .select('*')
@@ -143,8 +184,11 @@ export default async function handler(req, res) {
       .single();
 
     if (fetchError || !calendar) {
+      console.error('Calendar not found:', fetchError);
       return res.status(404).json({ error: 'Calendar not found' });
     }
+
+    console.log(`Calendar ${id} has ${calendar.tickers.length} tickers:`, calendar.tickers);
 
     const earningsPromises = calendar.tickers.map(ticker => getOrFetchTickerData(ticker));
     const earningsData = await Promise.all(earningsPromises);

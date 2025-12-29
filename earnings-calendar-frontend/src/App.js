@@ -19,7 +19,7 @@ export default function StockTickerManager() {
   const FINNHUB_API_KEY = 'd56v729r01qkvkasp1tgd56v729r01qkvkasp1u0';
   const SUPABASE_URL = 'https://dzeiarbsmzuhocvplxpa.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6ZWlhcmJzbXp1aG9jdnBseHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY2OTYxMDcsImV4cCI6MjA4MjI3MjEwN30.4QRJ37gulOnlMMr1klLMuRwq5uPF_I0s3g0jMuWPvDs';
-  const BACKEND_API_URL = 'http://finance-calendar.vercel.app/';
+  const BACKEND_API_URL = 'https://finance-calendar-api.vercel.app';
   
   // Initialize Supabase client (only if keys are provided)
   const supabase = SUPABASE_URL !== 'your_supabase_url_here' && SUPABASE_ANON_KEY !== 'your_supabase_anon_key_here'
