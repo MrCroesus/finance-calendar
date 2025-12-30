@@ -13,6 +13,9 @@ export default function StockTickerManager() {
   const [isGeneratingCalendar, setIsGeneratingCalendar] = useState(false);
   const [calendarUrl, setCalendarUrl] = useState(null);
   const [calendarError, setCalendarError] = useState(null);
+  const [includeFOMC, setIncludeFOMC] = useState(false);
+  const [includeBLS, setIncludeBLS] = useState(false);
+  const [includeBEA, setIncludeBEA] = useState(false);
   const dropdownRef = useRef(null);
   
   // Replace with your API keys
@@ -422,8 +425,8 @@ export default function StockTickerManager() {
   };
 
   const generateCalendar = async () => {
-    if (tickers.length === 0) {
-      setCalendarError('Please add at least one ticker');
+    if (tickers.length === 0 && !includeFOMC && !includeBLS && !includeBEA) {
+      setCalendarError('Please add at least one ticker or select an economic calendar');
       return;
     }
 
@@ -436,7 +439,12 @@ export default function StockTickerManager() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ tickers }),
+        body: JSON.stringify({ 
+          tickers,
+          includeFOMC,
+          includeBLS,
+          includeBEA
+        }),
       });
 
       if (!response.ok) {
@@ -630,6 +638,66 @@ export default function StockTickerManager() {
               ))}
             </div>
           )}
+
+          {/* Economic Calendar Options */}
+          <div className="border-t border-gray-200 pt-6 mb-6">
+            <h3 className="text-sm font-semibold text-gray-700 mb-3">Include Economic Calendars:</h3>
+            <div className="space-y-3">
+              <label className="flex items-start gap-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                <div className="relative flex items-center justify-center w-5 h-5 mt-0.5">
+                  <input
+                    type="checkbox"
+                    checked={includeFOMC}
+                    onChange={(e) => setIncludeFOMC(e.target.checked)}
+                    className="appearance-none w-5 h-5 border-2 border-gray-300 rounded checked:bg-indigo-600 checked:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-colors cursor-pointer"
+                  />
+                  {includeFOMC && (
+                    <Check className="absolute w-4 h-4 text-white pointer-events-none" strokeWidth={3} />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <span className="font-medium text-gray-800">FOMC Meetings</span>
+                  <p className="text-sm text-gray-500">Federal Open Market Committee (interest rate decisions from the Federal Reserve aka the Fed)</p>
+                </div>
+              </label>
+
+              <label className="flex items-start gap-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                <div className="relative flex items-center justify-center w-5 h-5 mt-0.5">
+                  <input
+                    type="checkbox"
+                    checked={includeBLS}
+                    onChange={(e) => setIncludeBLS(e.target.checked)}
+                    className="appearance-none w-5 h-5 border-2 border-gray-300 rounded checked:bg-indigo-600 checked:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-colors cursor-pointer"
+                  />
+                  {includeBLS && (
+                    <Check className="absolute w-4 h-4 text-white pointer-events-none" strokeWidth={3} />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <span className="font-medium text-gray-800">BLS Reports</span>
+                  <p className="text-sm text-gray-500">Bureau of Labor Statistics (jobs, unemployment, CPI aka inflation)</p>
+                </div>
+              </label>
+
+              <label className="flex items-start gap-3 cursor-pointer p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                <div className="relative flex items-center justify-center w-5 h-5 mt-0.5">
+                  <input
+                    type="checkbox"
+                    checked={includeBEA}
+                    onChange={(e) => setIncludeBEA(e.target.checked)}
+                    className="appearance-none w-5 h-5 border-2 border-gray-300 rounded checked:bg-indigo-600 checked:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition-colors cursor-pointer"
+                  />
+                  {includeBEA && (
+                    <Check className="absolute w-4 h-4 text-white pointer-events-none" strokeWidth={3} />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <span className="font-medium text-gray-800">BEA Reports</span>
+                  <p className="text-sm text-gray-500">Bureau of Economic Analysis (GDP, trade balance)</p>
+                </div>
+              </label>
+            </div>
+          </div>
           
           {/* Empty State */}
           {tickers.length === 0 && !isLoadingStocks && (
@@ -645,12 +713,25 @@ export default function StockTickerManager() {
           )}
           
           {/* Ticker Count */}
-          {tickers.length > 0 && (
+          {(tickers.length > 0 || includeFOMC || includeBLS || includeBEA) && (
             <div className="pt-6 border-t border-gray-200">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-gray-600 text-sm">
-                  <span className="font-semibold">{tickers.length}</span> ticker{tickers.length !== 1 ? 's' : ''} added
-                </p>
+                <div className="text-gray-600 text-sm">
+                  {tickers.length > 0 && (
+                    <p>
+                      <span className="font-semibold">{tickers.length}</span> ticker{tickers.length !== 1 ? 's' : ''} added
+                    </p>
+                  )}
+                  {(includeFOMC || includeBLS || includeBEA) && (
+                    <p className="mt-1">
+                      Economic calendars: {[
+                        includeFOMC && 'FOMC',
+                        includeBLS && 'BLS',
+                        includeBEA && 'BEA'
+                      ].filter(Boolean).join(', ')}
+                    </p>
+                  )}
+                </div>
                 
                 {BACKEND_API_URL !== 'your_vercel_backend_url_here' && (
                   <button

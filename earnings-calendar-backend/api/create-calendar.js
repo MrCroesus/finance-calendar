@@ -1,3 +1,4 @@
+// FILE: api/create-calendar.js
 import { supabase } from '../lib/supabase.js';
 
 export default async function handler(req, res) {
@@ -10,13 +11,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { tickers } = req.body;
+    const { tickers, includeFOMC, includeBLS, includeBEA } = req.body;
 
-    if (!tickers || !Array.isArray(tickers) || tickers.length === 0) {
-      return res.status(400).json({ error: 'Invalid tickers array' });
+    // Validate that at least something is selected
+    if ((!tickers || tickers.length === 0) && !includeFOMC && !includeBLS && !includeBEA) {
+      return res.status(400).json({ error: 'Please add at least one ticker or select an economic calendar' });
     }
 
-    if (tickers.length > 500) {
+    // Validate tickers if provided
+    if (tickers && tickers.length > 500) {
       return res.status(400).json({ error: 'Maximum 500 tickers allowed' });
     }
 
@@ -26,7 +29,10 @@ export default async function handler(req, res) {
       .from('calendars')
       .insert({
         id: calendarId,
-        tickers: tickers.map(t => t.toUpperCase()),
+        tickers: tickers || [],
+        include_fomc: includeFOMC || false,
+        include_bls: includeBLS || false,
+        include_bea: includeBEA || false,
         created_at: new Date().toISOString()
       })
       .select()

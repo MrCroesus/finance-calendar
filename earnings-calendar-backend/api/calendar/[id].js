@@ -1,6 +1,7 @@
 // FILE: api/calendar/[id].js
 import { supabase } from '../../lib/supabase.js';
 import yahooFinance from 'yahoo-finance2';
+import { getFOMCDates, getBLSDates, getBEADates, formatEconomicEvent } from '../../lib/economic-calendar.js';
 
 async function fetchEarningsDate(ticker) {
   try {
@@ -135,16 +136,17 @@ function formatICSDate(date) {
   return `${year}${month}${day}`;
 }
 
-function generateICS(earningsData, calendarId) {
+function generateICS(earningsData, economicEvents, calendarId) {
   const now = new Date();
   const timestamp = formatICSDate(now) + 'T' + 
     now.toISOString().split('T')[1].replace(/[-:]/g, '').split('.')[0] + 'Z';
 
   const validEvents = earningsData.filter(item => item !== null);
   
-  console.log(`Generating calendar with ${validEvents.length} events out of ${earningsData.length} tickers`);
+  console.log(`Generating calendar with ${validEvents.length} earnings events and ${economicEvents.length} economic events`);
 
-  const events = validEvents.map(item => {
+  // Generate earnings events
+  const earningsEvents = validEvents.map(item => {
     const dateStr = formatICSDate(item.date);
     const uid = `earnings-${item.ticker}-${dateStr}-${calendarId}@earningscalendar.com`;
 
@@ -159,6 +161,14 @@ TRANSP:TRANSPARENT
 END:VEVENT`;
   }).join('\n');
 
+  // Generate economic events
+  const economicEventsFormatted = economicEvents
+    .map(event => formatEconomicEvent(event, calendarId))
+    .join('\n');
+
+  // Combine all events
+  const allEvents = [earningsEvents, economicEventsFormatted].filter(Boolean).join('\n');
+
   return `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Earnings Calendar Subscription//EN
@@ -166,10 +176,10 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Finance Calendar
 X-WR-TIMEZONE:UTC
-X-WR-CALDESC:Earnings dates for tracked stocks
+X-WR-CALDESC:Earnings dates for tracked stocks and economic calendar events
 X-PUBLISHED-TTL:P60D
 REFRESH-INTERVAL;VALUE=DURATION:P60D
-${events}
+${allEvents}
 END:VCALENDAR`;
 }
 
@@ -196,10 +206,32 @@ export default async function handler(req, res) {
 
     console.log(`Calendar ${id} has ${calendar.tickers.length} tickers:`, calendar.tickers);
 
+    // Fetch earnings data for tickers
     const earningsPromises = calendar.tickers.map(ticker => getOrFetchTickerData(ticker));
     const earningsData = await Promise.all(earningsPromises);
 
-    const icsContent = generateICS(earningsData, id);
+    // Fetch economic calendar events based on preferences
+    const economicEvents = [];
+    
+    if (calendar.include_fomc) {
+      console.log('Including FOMC dates');
+      const fomcDates = await getFOMCDates();
+      economicEvents.push(...fomcDates);
+    }
+    
+    if (calendar.include_bls) {
+      console.log('Including BLS dates');
+      const blsDates = getBLSDates();
+      economicEvents.push(...blsDates);
+    }
+    
+    if (calendar.include_bea) {
+      console.log('Including BEA dates');
+      const beaDates = getBEADates();
+      economicEvents.push(...beaDates);
+    }
+
+    const icsContent = generateICS(earningsData, economicEvents, id);
 
     res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
     res.setHeader('Content-Disposition', `inline; filename="earnings-calendar.ics"`);
