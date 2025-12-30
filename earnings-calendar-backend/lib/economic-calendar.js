@@ -2,7 +2,7 @@
 // Economic calendar data with multiple sources
 
 import fetch from 'node-fetch';
-import ical from 'node-ical';
+import ICAL from 'ical.js';
 
 // ============================================================================
 // FOMC MEETINGS - Hardcoded (update annually)
@@ -40,28 +40,29 @@ async function fetchBLSDates() {
     }
     
     const icsText = await response.text();
-    const events = await ical.async.parseICS(icsText);
+    
+    // Parse ICS file using ical.js
+    const jcalData = ICAL.parse(icsText);
+    const comp = new ICAL.Component(jcalData);
+    const vevents = comp.getAllSubcomponents('vevent');
     
     const blsEvents = [];
+    const now = new Date();
+    const twoYearsFromNow = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate());
     
-    for (const event of Object.values(events)) {
-      if (event.type === 'VEVENT' && event.start) {
-        // Parse the event
-        const startDate = new Date(event.start);
-        const title = event.summary || 'BLS Report';
-        const description = event.description || 'Bureau of Labor Statistics economic report';
-        
-        // Only include future events (within next 2 years)
-        const now = new Date();
-        const twoYearsFromNow = new Date(now.getFullYear() + 2, now.getMonth(), now.getDate());
-        
-        if (startDate >= now && startDate <= twoYearsFromNow) {
-          blsEvents.push({
-            date: startDate.toISOString().split('T')[0],
-            title: title,
-            description: description.replace(/\n/g, ' ').substring(0, 200) // Clean up description
-          });
-        }
+    for (const vevent of vevents) {
+      const event = new ICAL.Event(vevent);
+      const startDate = event.startDate.toJSDate();
+      
+      // Only include future events (within next 2 years)
+      if (startDate >= now && startDate <= twoYearsFromNow) {
+        blsEvents.push({
+          date: startDate.toISOString().split('T')[0],
+          title: event.summary || 'BLS Report',
+          description: (event.description || 'Bureau of Labor Statistics economic report')
+            .replace(/\n/g, ' ')
+            .substring(0, 200) // Clean up description
+        });
       }
     }
     

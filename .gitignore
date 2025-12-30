@@ -3,3 +3,5 @@ CIFAR10/best_cifar10_regression_params.pt
 CIFAR10/cifar10_regression_params.pt
 credentials.json
 token.json
+earnings-calendar-backend/node_modules
+earnings-calendar-frontend/node_modules
