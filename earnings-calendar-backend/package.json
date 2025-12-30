@@ -4,6 +4,8 @@
   "type": "module",
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
-    "yahoo-finance2": "^2.11.3"
+    "yahoo-finance2": "^2.11.3",
+    "node-fetch": "^2.6.7",
+    "node-ical": "^0.18.0"
   }
 }

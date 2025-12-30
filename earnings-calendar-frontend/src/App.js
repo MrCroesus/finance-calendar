@@ -657,7 +657,7 @@ export default function StockTickerManager() {
                 </div>
                 <div className="flex-1">
                   <span className="font-medium text-gray-800">FOMC Meetings</span>
-                  <p className="text-sm text-gray-500">Federal Open Market Committee (interest rate decisions from the Federal Reserve aka the Fed)</p>
+                  <p className="text-sm text-gray-500">Federal Open Market Committee (interest rate decisions from the Federal Reserve)</p>
                 </div>
               </label>
 
