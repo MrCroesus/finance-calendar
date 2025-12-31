@@ -348,23 +348,38 @@ async function fetchBEADates() {
       
       const html = await response.text();
       
-      // Parse HTML to extract dates
-      // Look for patterns like: <td class="date">2025-01-30</td>
-      const dateRegex = /<td class="date">(\d{4}-\d{2}-\d{2})<\/td>/g;
-      const titleRegex = /<td class="release-name">(.*?)<\/td>/gs;
+      // Parse HTML structure:
+      // <span style="font-weight: bold;">Thursday January 30, 2025</span>
+      // followed by
+      // <a href="/release?rid=53">Gross Domestic Product</a>
       
-      const dates = [...html.matchAll(dateRegex)].map(m => m[1]);
-      const titles = [...html.matchAll(titleRegex)].map(m => 
-        m[1].replace(/<[^>]*>/g, '').trim()
-      );
+      // Match date headers like "Thursday January 30, 2025"
+      const dateHeaderRegex = /<span style="font-weight: bold;">(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+(\w+)\s+(\d{1,2}),\s+(\d{4})<\/span>/g;
+      const dateMatches = [...html.matchAll(dateHeaderRegex)];
       
-      // Combine dates and titles
-      for (let i = 0; i < Math.min(dates.length, titles.length); i++) {
-        allGDPEvents.push({
-          date: dates[i],
-          title: titles[i] || 'GDP Report',
-          description: 'Bureau of Economic Analysis Gross Domestic Product report'
-        });
+      for (const match of dateMatches) {
+        const monthName = match[1]; // e.g., "January"
+        const day = match[2]; // e.g., "30"
+        const year = match[3]; // e.g., "2025"
+        
+        // Convert month name to number
+        const monthMap = {
+          'January': '01', 'February': '02', 'March': '03', 'April': '04',
+          'May': '05', 'June': '06', 'July': '07', 'August': '08',
+          'September': '09', 'October': '10', 'November': '11', 'December': '12'
+        };
+        
+        const month = monthMap[monthName];
+        if (month) {
+          const dateStr = `${year}-${month}-${day.padStart(2, '0')}`;
+          
+          allGDPEvents.push({
+            date: dateStr,
+            time: '08:30', // GDP releases are at 8:30 AM ET
+            title: 'Gross Domestic Product',
+            description: 'Bureau of Economic Analysis GDP report'
+          });
+        }
       }
     }
     
@@ -385,18 +400,19 @@ function generateBEAFallback() {
   
   // GDP releases are typically last week of Jan, Apr, Jul, Oct
   const gdpMonths = [
-    { month: 0, day: 30, title: 'GDP - Advance Estimate' },
-    { month: 3, day: 30, title: 'GDP - Advance Estimate' },
-    { month: 6, day: 31, title: 'GDP - Advance Estimate' },
-    { month: 9, day: 30, title: 'GDP - Advance Estimate' },
+    { month: 0, day: 30, title: 'Gross Domestic Product' },
+    { month: 3, day: 30, title: 'Gross Domestic Product' },
+    { month: 6, day: 31, title: 'Gross Domestic Product' },
+    { month: 9, day: 30, title: 'Gross Domestic Product' },
   ];
   
   for (let year = currentYear; year <= currentYear + 1; year++) {
     gdpMonths.forEach(({ month, day, title }) => {
       reports.push({
         date: new Date(year, month, day).toISOString().split('T')[0],
+        time: '08:30',
         title: title,
-        description: 'Bureau of Economic Analysis Gross Domestic Product report'
+        description: 'Bureau of Economic Analysis GDP report'
       });
     });
   }
@@ -441,13 +457,35 @@ export function formatEconomicEvent(event, calendarId) {
   const cleanTitle = event.title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
   const uid = `economic-${cleanTitle}-${dateStr}-${calendarId}@financecalendar.com`;
   
+  // Handle multi-day events (FOMC meetings)
+  let dtend = '';
+  if (event.endDate) {
+    const endDate = new Date(event.endDate);
+    const endYear = endDate.getFullYear();
+    const endMonth = String(endDate.getMonth() + 1).padStart(2, '0');
+    const endDay = String(endDate.getDate()).padStart(2, '0');
+    const endDateStr = `${endYear}${endMonth}${endDay}`;
+    dtend = `DTEND;VALUE=DATE:${endDateStr}`;
+  }
+  
+  // Handle timed events (BLS, BEA)
+  let dtstart = `DTSTART;VALUE=DATE:${dateStr}`;
+  if (event.time) {
+    // Convert time like "08:30" to "083000" in ET timezone
+    const timeStr = event.time.replace(':', '') + '00';
+    dtstart = `DTSTART;TZID=America/New_York:${dateStr}T${timeStr}`;
+    // Timed events are 0 duration (just marks the time)
+    dtend = '';
+  }
+  
   return `BEGIN:VEVENT
 UID:${uid}
 DTSTAMP:${timestamp}
-DTSTART;VALUE=DATE:${dateStr}
+${dtstart}
+${dtend}
 SUMMARY:${event.title}
 DESCRIPTION:${event.description}
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
-END:VEVENT`;
+END:VEVENT`.replace(/\n\n/g, '\n'); // Remove empty lines
 }
