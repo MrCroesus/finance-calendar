@@ -49,16 +49,22 @@ function parseICS(icsContent) {
         events.push({ ...currentEvent });
       }
     } else if (inEvent) {
-      // Parse DTSTART - handle multiple formats
+      // Parse DTSTART - handle multiple formats and extract time
       if (line.startsWith('DTSTART')) {
-        // Extract date from various formats:
-        // DTSTART;VALUE=DATE:20250110
+        // Extract date and time from various formats:
         // DTSTART;TZID=US-Eastern:20250103T100000
-        // DTSTART:20250110
-        const match = line.match(/DTSTART[^:]*:(\d{8})/);
+        const match = line.match(/DTSTART[^:]*:(\d{8})T?(\d{6})?/);
         if (match) {
           const dateStr = match[1];
           currentEvent.date = `${dateStr.slice(0,4)}-${dateStr.slice(4,6)}-${dateStr.slice(6,8)}`;
+          
+          // Extract time if present (format: HHMMSS)
+          if (match[2]) {
+            const timeStr = match[2];
+            const hours = timeStr.slice(0,2);
+            const minutes = timeStr.slice(2,4);
+            currentEvent.time = `${hours}:${minutes}`;
+          }
         }
       }
       
@@ -103,7 +109,9 @@ function generateJavaScriptCode(events) {
       currentMonth = month;
     }
     
-    code += `  { date: '${event.date}', title: '${event.title}', description: '${event.description}' },\n`;
+    // Include time if available
+    const timeStr = event.time ? `, time: '${event.time}'` : '';
+    code += `  { date: '${event.date}'${timeStr}, title: '${event.title}', description: '${event.description}' },\n`;
   });
   
   code += '];\n';
