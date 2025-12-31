@@ -216,20 +216,28 @@ export default async function handler(req, res) {
     if (calendar.include_fomc) {
       console.log('Including FOMC dates');
       const fomcDates = await getFOMCDates();
-      economicEvents.push(...fomcDates);
+      if (Array.isArray(fomcDates)) {
+        economicEvents.push(...fomcDates);
+      }
     }
     
     if (calendar.include_bls) {
       console.log('Including BLS dates');
-      const blsDates = getBLSDates();
-      economicEvents.push(...blsDates);
+      const blsDates = await getBLSDates();
+      if (Array.isArray(blsDates)) {
+        economicEvents.push(...blsDates);
+      }
     }
     
     if (calendar.include_bea) {
       console.log('Including BEA dates');
-      const beaDates = getBEADates();
-      economicEvents.push(...beaDates);
+      const beaDates = await getBEADates();
+      if (Array.isArray(beaDates)) {
+        economicEvents.push(...beaDates);
+      }
     }
+
+    console.log(`Total economic events: ${economicEvents.length}`);
 
     const icsContent = generateICS(earningsData, economicEvents, id);
 
