@@ -1,54 +1,73 @@
-// FILE: api/create-calendar.js
+// api/create-calendar.js
 import { supabase } from '../lib/supabase.js';
+import { randomBytes } from 'crypto';
 
 export default async function handler(req, res) {
+  // Handle preflight OPTIONS request
   if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     return res.status(200).end();
   }
+
+  // Set CORS headers for actual request
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { tickers, includeFOMC, includeBLS, includeBEA } = req.body;
+    const { tickers, include_fomc, include_bls, include_bea } = req.body;
 
-    // Validate that at least something is selected
-    if ((!tickers || tickers.length === 0) && !includeFOMC && !includeBLS && !includeBEA) {
-      return res.status(400).json({ error: 'Please add at least one ticker or select an economic calendar' });
+    // Validate input
+    if (!Array.isArray(tickers)) {
+      return res.status(400).json({ error: 'tickers must be an array' });
     }
 
-    // Validate tickers if provided
-    if (tickers && tickers.length > 500) {
-      return res.status(400).json({ error: 'Maximum 500 tickers allowed' });
-    }
+    // Generate unique calendar ID
+    const id = randomBytes(16).toString('hex');
 
-    const calendarId = Math.random().toString(36).substring(2, 15);
-
+    // Insert into database
     const { data, error } = await supabase
       .from('calendars')
       .insert({
-        id: calendarId,
-        tickers: tickers || [],
-        include_fomc: includeFOMC || false,
-        include_bls: includeBLS || false,
-        include_bea: includeBEA || false,
+        id: id,
+        tickers: tickers,
+        include_fomc: include_fomc || false,
+        include_bls: include_bls || false,
+        include_bea: include_bea || false,
         created_at: new Date().toISOString()
       })
       .select()
       .single();
 
     if (error) {
-      console.error('Supabase error:', error);
+      console.error('Database error:', error);
       return res.status(500).json({ error: 'Failed to create calendar' });
     }
 
-    res.status(200).json({
-      calendarId,
-      url: `/api/calendar/${calendarId}`
+    // Return calendar ID and subscription URL
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}`
+      : req.headers.host 
+        ? `https://${req.headers.host}`
+        : 'http://localhost:3000';
+
+    return res.status(201).json({
+      id: data.id,
+      subscriptionUrl: `${baseUrl}/api/calendar/${data.id}`,
+      calendar: data
     });
+
   } catch (error) {
     console.error('Error creating calendar:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ 
+      error: 'Internal server error',
+      message: error.message 
+    });
   }
 }

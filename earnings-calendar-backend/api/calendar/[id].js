@@ -4,6 +4,19 @@ import { getEconomicEvents, eventToICS } from '../../lib/economic-calendar.js';
 import yahooFinance from 'yahoo-finance2';
 
 export default async function handler(req, res) {
+  // Handle preflight OPTIONS request
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return res.status(200).end();
+  }
+
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
   const { id } = req.query;
 
   try {
@@ -30,19 +43,15 @@ export default async function handler(req, res) {
         const earningsDate = await getEarningsDate(ticker);
         
         if (earningsDate) {
-          // Determine time and description based on timing
           let eventTime, eventDescription;
           
           if (earningsDate.timing === 'BMO') {
-            // Before Market Open - 7:00 AM ET = 12:00 PM UTC
             eventTime = '12:00:00';
             eventDescription = `${earningsDate.companyName || ticker} earnings release (Before Market Open)`;
           } else if (earningsDate.timing === 'AMC') {
-            // After Market Close - 4:00 PM ET = 9:00 PM UTC
             eventTime = '21:00:00';
             eventDescription = `${earningsDate.companyName || ticker} earnings release (After Market Close)`;
           } else {
-            // Unknown timing - use 1:00 PM UTC as default
             eventTime = '13:00:00';
             eventDescription = `${earningsDate.companyName || ticker} earnings release`;
           }
@@ -195,18 +204,12 @@ async function fetchAndCacheEarnings(ticker) {
 
     const companyName = quote.longName || quote.shortName || ticker;
     
-    // Determine earnings timing (BMO/AMC)
-    // Yahoo Finance sometimes provides this in earningsTimestamp hour
-    // If hour is before 12 PM UTC (7 AM ET), it's BMO
-    // If hour is after 8 PM UTC (3 PM ET), it's AMC
     let timing = null;
     const hour = earningsDate.getUTCHours();
     
     if (hour >= 4 && hour < 14) {
-      // Morning hours UTC = Before Market Open ET
       timing = 'BMO';
     } else if (hour >= 20 || hour < 4) {
-      // Evening hours UTC = After Market Close ET
       timing = 'AMC';
     }
 
