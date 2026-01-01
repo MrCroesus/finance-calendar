@@ -124,7 +124,7 @@ export default async function handler(req, res) {
     ].join('\r\n');
 
     res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
-    res.setHeader('Content-Disposition', `inline; filename="calendar-${id}.ics"`);
+    res.setHeader('Content-Disposition', `inline; filename="finance-calendar.ics"`);
     res.setHeader('Cache-Control', 'public, max-age=3600');
     
     return res.status(200).send(icsContent);
