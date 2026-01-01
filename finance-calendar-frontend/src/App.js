@@ -434,6 +434,14 @@ export default function StockTickerManager() {
     setCalendarError(null);
 
     try {
+      console.log('Sending request to:', `${BACKEND_API_URL}/api/create-calendar`);
+      console.log('Request body:', { 
+        tickers,
+        include_fomc,
+        include_bls,
+        include_bea
+      });
+
       const response = await fetch(`${BACKEND_API_URL}/api/create-calendar`, {
         method: 'POST',
         headers: {
@@ -447,16 +455,29 @@ export default function StockTickerManager() {
         }),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+      
       if (!response.ok) {
-        throw new Error('Failed to create calendar');
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error(`Failed to create calendar: ${response.status}`);
       }
 
       const data = await response.json();
-      const fullUrl = `${BACKEND_API_URL}/api/calendar/${data.calendarId}`;
-      setCalendarUrl(fullUrl);
+      console.log('Response data:', data);
+      console.log('Setting calendar URL to:', data.subscriptionUrl);
+      
+      if (data.subscriptionUrl) {
+        setCalendarUrl(data.subscriptionUrl);
+        console.log('Calendar URL set successfully');
+      } else {
+        console.error('No subscriptionUrl in response');
+        throw new Error('No subscription URL in response');
+      }
     } catch (error) {
       console.error('Error generating calendar:', error);
-      setCalendarError('Failed to generate calendar. Please try again.');
+      setCalendarError(`Failed to generate calendar: ${error.message}`);
     } finally {
       setIsGeneratingCalendar(false);
     }
