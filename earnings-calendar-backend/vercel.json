@@ -1,6 +1,7 @@
 {
   "buildCommand": "npm run fetch-calendars",
   "installCommand": "npm install",
+  "outputDirectory": "public",
   "headers": [
     {
       "source": "/api/(.*)",
