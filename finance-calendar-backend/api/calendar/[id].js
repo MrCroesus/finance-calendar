@@ -43,28 +43,14 @@ export default async function handler(req, res) {
         const earningsDate = await getEarningsDate(ticker);
         
         if (earningsDate) {
-          let eventTime, eventDescription;
-          
-          if (earningsDate.timing === 'BMO') {
-            eventTime = '12:00:00';
-            eventDescription = `${earningsDate.companyName || ticker} earnings release (Before Market Open)`;
-          } else if (earningsDate.timing === 'AMC') {
-            eventTime = '21:00:00';
-            eventDescription = `${earningsDate.companyName || ticker} earnings release (After Market Close)`;
-          } else {
-            eventTime = '13:00:00';
-            eventDescription = `${earningsDate.companyName || ticker} earnings release`;
-          }
-
+          // Create all-day event for earnings (Yahoo doesn't provide reliable exact times)
           earningsEvents.push({
             dtstart: {
               date: earningsDate.date,
-              time: eventTime,
-              isAllDay: false,
-              timestamp: `${earningsDate.date}T${eventTime}Z`
+              isAllDay: true
             },
             summary: `${ticker} Earnings`,
-            description: eventDescription,
+            description: `${earningsDate.companyName || ticker} earnings release`,
             uid: `earnings-${ticker}-${earningsDate.date}@${id}`
           });
         }
