@@ -43,14 +43,41 @@ export default async function handler(req, res) {
         const earningsDate = await getEarningsDate(ticker);
         
         if (earningsDate) {
-          // Create all-day event for earnings (Yahoo doesn't provide reliable exact times)
+          // Determine time based on timing info from Yahoo Finance
+          let eventTime, eventDescription;
+          
+          if (earningsDate.timing === 'BMO') {
+            // Before Market Open - 7:00 AM ET = 12:00 PM UTC
+            eventTime = '12:00:00';
+            eventDescription = `${earningsDate.companyName || ticker} earnings release (Before Market Open)`;
+          } else if (earningsDate.timing === 'AMC') {
+            // After Market Close - 4:00 PM ET = 9:00 PM UTC
+            eventTime = '21:00:00';
+            eventDescription = `${earningsDate.companyName || ticker} earnings release (After Market Close)`;
+          } else {
+            // Unknown timing - make it all-day event
+            earningsEvents.push({
+              dtstart: {
+                date: earningsDate.date,
+                isAllDay: true
+              },
+              summary: `${ticker} Earnings`,
+              description: `${earningsDate.companyName || ticker} earnings release`,
+              uid: `earnings-${ticker}-${earningsDate.date}@${id}`
+            });
+            continue;
+          }
+
+          // Timed event (BMO or AMC)
           earningsEvents.push({
             dtstart: {
               date: earningsDate.date,
-              isAllDay: true
+              time: eventTime,
+              isAllDay: false,
+              timestamp: `${earningsDate.date}T${eventTime}Z`
             },
             summary: `${ticker} Earnings`,
-            description: `${earningsDate.companyName || ticker} earnings release`,
+            description: eventDescription,
             uid: `earnings-${ticker}-${earningsDate.date}@${id}`
           });
         }
