@@ -108,30 +108,39 @@ export function eventToICS(event, calendarId) {
   
   lines.push('BEGIN:VEVENT');
   
+  // Validate event has required fields
+  if (!event || !event.dtstart || !event.summary) {
+    console.error('Invalid event:', event);
+    return ''; // Skip invalid events
+  }
+  
   const uid = event.uid || `${event.summary}-${event.dtstart.date}@${calendarId}`;
   lines.push(`UID:${uid}`);
   
   // DTSTART
-  if (event.dtstart.isAllDay) {
+  if (event.dtstart.isAllDay && event.dtstart.date) {
     lines.push(`DTSTART;VALUE=DATE:${event.dtstart.date.replace(/-/g, '')}`);
   } else if (event.dtstart.timestamp) {
     const dt = new Date(event.dtstart.timestamp);
     lines.push(`DTSTART:${formatICSDateTime(dt)}`);
-  } else if (event.dtstart.time) {
+  } else if (event.dtstart.time && event.dtstart.date) {
     const dt = new Date(`${event.dtstart.date}T${event.dtstart.time}Z`);
     lines.push(`DTSTART:${formatICSDateTime(dt)}`);
-  } else {
+  } else if (event.dtstart.date) {
     lines.push(`DTSTART;VALUE=DATE:${event.dtstart.date.replace(/-/g, '')}`);
+  } else {
+    console.error('Event missing date:', event);
+    return ''; // Skip events without a valid date
   }
   
   // DTEND
   if (event.dtend) {
-    if (event.dtend.isAllDay) {
+    if (event.dtend.isAllDay && event.dtend.date) {
       lines.push(`DTEND;VALUE=DATE:${event.dtend.date.replace(/-/g, '')}`);
     } else if (event.dtend.timestamp) {
       const dt = new Date(event.dtend.timestamp);
       lines.push(`DTEND:${formatICSDateTime(dt)}`);
-    } else if (event.dtend.time) {
+    } else if (event.dtend.time && event.dtend.date) {
       const dt = new Date(`${event.dtend.date}T${event.dtend.time}Z`);
       lines.push(`DTEND:${formatICSDateTime(dt)}`);
     }

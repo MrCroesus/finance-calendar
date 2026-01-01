@@ -93,7 +93,9 @@ export default async function handler(req, res) {
 
     console.log(`✓ Total events: ${allEvents.length}`);
 
-    const icsEvents = allEvents.map(event => eventToICS(event, id));
+    const icsEvents = allEvents
+      .map(event => eventToICS(event, id))
+      .filter(ics => ics !== ''); // Remove any invalid events
 
     const icsContent = [
       'BEGIN:VCALENDAR',
