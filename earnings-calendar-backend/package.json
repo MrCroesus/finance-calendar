@@ -10,8 +10,5 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
     "yahoo-finance2": "^2.11.3"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
