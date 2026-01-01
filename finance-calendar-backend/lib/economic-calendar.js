@@ -4,19 +4,19 @@ import { supabase } from './supabase.js';
 // FOMC meetings - update annually from federalreserve.gov
 const FOMC_MEETINGS = [
   // 2026
-  { date: '2026-01-27', endDate: '2026-01-28', title: 'FOMC Meeting', hasSEP: false },
-  { date: '2026-03-17', endDate: '2026-03-18', title: 'FOMC Meeting', hasSEP: true },
-  { date: '2026-04-28', endDate: '2026-04-29', title: 'FOMC Meeting', hasSEP: false },
-  { date: '2026-06-16', endDate: '2026-06-17', title: 'FOMC Meeting', hasSEP: true },
-  { date: '2026-07-28', endDate: '2026-07-29', title: 'FOMC Meeting', hasSEP: false },
-  { date: '2026-09-15', endDate: '2026-09-16', title: 'FOMC Meeting', hasSEP: true },
-  { date: '2026-10-27', endDate: '2026-10-28', title: 'FOMC Meeting', hasSEP: false },
-  { date: '2026-12-08', endDate: '2026-12-09', title: 'FOMC Meeting', hasSEP: true },
+  { startDate: '2026-01-27', endDate: '2026-01-28', title: 'FOMC Meeting', hasSEP: false },
+  { startDate: '2026-03-17', endDate: '2026-03-18', title: 'FOMC Meeting', hasSEP: true },
+  { startDate: '2026-04-28', endDate: '2026-04-29', title: 'FOMC Meeting', hasSEP: false },
+  { startDate: '2026-06-16', endDate: '2026-06-17', title: 'FOMC Meeting', hasSEP: true },
+  { startDate: '2026-07-28', endDate: '2026-07-29', title: 'FOMC Meeting', hasSEP: false },
+  { startDate: '2026-09-15', endDate: '2026-09-16', title: 'FOMC Meeting', hasSEP: true },
+  { startDate: '2026-10-27', endDate: '2026-10-28', title: 'FOMC Meeting', hasSEP: false },
+  { startDate: '2026-12-08', endDate: '2026-12-09', title: 'FOMC Meeting', hasSEP: true },
   
   // 2027 - ADD THESE DATES WHEN ANNOUNCED
   // Check which meetings have * on: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
-  // { date: '2026-01-27', endDate: '2026-01-28', title: 'FOMC Meeting', hasSEP: false },
-  // { date: '2026-03-17', endDate: '2026-03-18', title: 'FOMC Meeting', hasSEP: true },
+  // { startDate: '2026-01-27', endDate: '2026-01-28', title: 'FOMC Meeting', hasSEP: false },
+  // { startDate: '2026-03-17', endDate: '2026-03-18', title: 'FOMC Meeting', hasSEP: true },
   // etc...
 ];
 
