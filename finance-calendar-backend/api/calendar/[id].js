@@ -200,25 +200,39 @@ async function getEarningsFromCache(ticker) {
 
 async function fetchAndCacheEarnings(ticker) {
   try {
-    const quote = await yahooFinance.quote(ticker);
+    // Use quoteSummary with calendarEvents module for earnings dates
+    const data = await yahooFinance.quoteSummary(ticker, {
+      modules: ['calendarEvents', 'price']
+    });
     
-    if (!quote) {
-      throw new Error('No quote data returned');
+    if (!data || !data.calendarEvents) {
+      console.warn(`  ⚠️  ${ticker}: No calendar events data`);
+      return null;
     }
 
-    const earningsDate = quote.earningsTimestamp 
-      ? new Date(quote.earningsTimestamp * 1000)
-      : quote.earningsDate 
-        ? new Date(quote.earningsDate)
-        : null;
-
-    if (!earningsDate || isNaN(earningsDate.getTime())) {
+    const earnings = data.calendarEvents.earnings;
+    
+    if (!earnings || !earnings.earningsDate || earnings.earningsDate.length === 0) {
       console.warn(`  ⚠️  ${ticker}: No earnings date available`);
       return null;
     }
 
-    const companyName = quote.longName || quote.shortName || ticker;
+    // earningsDate is an array, usually with 1-2 dates (range)
+    // Use the first date
+    const earningsDate = earnings.earningsDate[0];
     
+    // Validate the date
+    if (!earningsDate || 
+        isNaN(earningsDate.getTime()) || 
+        earningsDate.getFullYear() < 2000 || 
+        earningsDate.getFullYear() > 2100) {
+      console.warn(`  ⚠️  ${ticker}: Invalid earnings date`);
+      return null;
+    }
+
+    const companyName = data.price?.longName || data.price?.shortName || ticker;
+    
+    // Determine timing from hour
     let timing = null;
     const hour = earningsDate.getUTCHours();
     
@@ -254,28 +268,30 @@ async function fetchAndCacheEarnings(ticker) {
     };
 
   } catch (error) {
-    console.error(`Yahoo Finance fetch failed for ${ticker}:`, error);
+    console.error(`Yahoo Finance fetch failed for ${ticker}:`, error.message);
     return null;
   }
 }
 
 async function refreshEarningsCache(ticker) {
   try {
-    const quote = await yahooFinance.quote(ticker);
+    const data = await yahooFinance.quoteSummary(ticker, {
+      modules: ['calendarEvents', 'price']
+    });
     
-    if (!quote) return;
+    if (!data?.calendarEvents?.earnings?.earningsDate?.[0]) return;
 
-    const earningsDate = quote.earningsTimestamp 
-      ? new Date(quote.earningsTimestamp * 1000)
-      : quote.earningsDate 
-        ? new Date(quote.earningsDate)
-        : null;
+    const earningsDate = data.calendarEvents.earnings.earningsDate[0];
 
-    if (!earningsDate || isNaN(earningsDate.getTime())) {
+    // Validate date
+    if (!earningsDate || 
+        isNaN(earningsDate.getTime()) || 
+        earningsDate.getFullYear() < 2000 || 
+        earningsDate.getFullYear() > 2100) {
       return;
     }
 
-    const companyName = quote.longName || quote.shortName || ticker;
+    const companyName = data.price?.longName || data.price?.shortName || ticker;
     
     let timing = null;
     const hour = earningsDate.getUTCHours();
