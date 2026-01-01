@@ -1,6 +1,21 @@
-import fetch from 'node-fetch';
+// scripts/fetch-economic-calendars.js
 import fs from 'fs/promises';
 import { createClient } from '@supabase/supabase-js';
+
+// Load environment variables from .env file if it exists
+if (!process.env.SUPABASE_URL) {
+  try {
+    const envContent = await fs.readFile('.env', 'utf-8');
+    envContent.split('\n').forEach(line => {
+      const [key, ...valueParts] = line.split('=');
+      if (key && valueParts.length) {
+        process.env[key.trim()] = valueParts.join('=').trim();
+      }
+    });
+  } catch (err) {
+    console.error('⚠️  No .env file found. Make sure environment variables are set.');
+  }
+}
 
 const supabase = createClient(
   process.env.SUPABASE_URL,

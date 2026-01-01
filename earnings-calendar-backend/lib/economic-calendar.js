@@ -1,13 +1,7 @@
 // lib/economic-calendar.js
-// Provides functions to fetch economic calendar events (FOMC, BLS, BEA)
-
 import { supabase } from './supabase.js';
 
-// ============================================================
-// FOMC MEETINGS
-// Update annually from: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm
-// ============================================================
-
+// FOMC meetings - update annually from federalreserve.gov
 const FOMC_MEETINGS = [
   // 2026
   { date: '2026-01-27', endDate: '2026-01-28', title: 'FOMC Meeting', hasSEP: false },
@@ -26,12 +20,6 @@ const FOMC_MEETINGS = [
   // etc...
 ];
 
-// ============================================================
-// BLS EVENTS (Bureau of Labor Statistics)
-// Fetched from: https://www.bls.gov/schedule/news_release/bls.ics
-// Cached in Supabase by build script
-// ============================================================
-
 export async function getBLSEvents() {
   try {
     const { data, error } = await supabase
@@ -46,11 +34,11 @@ export async function getBLSEvents() {
     }
 
     if (data && data.events && Array.isArray(data.events)) {
-      console.log(`✓ Loaded ${data.events.length} BLS events from cache (updated: ${data.last_updated})`);
+      console.log(`✓ Loaded ${data.events.length} BLS events from cache`);
       return data.events;
     }
 
-    console.warn('⚠️  BLS events array is empty or invalid');
+    console.warn('⚠️  BLS events array is empty');
     return [];
     
   } catch (err) {
@@ -58,12 +46,6 @@ export async function getBLSEvents() {
     return [];
   }
 }
-
-// ============================================================
-// BEA EVENTS (Bureau of Economic Analysis)
-// Fetched from: https://www.bea.gov/news/schedule/ics/online-calendar-subscription.ics
-// Cached in Supabase by build script
-// ============================================================
 
 export async function getBEAEvents() {
   try {
@@ -79,11 +61,11 @@ export async function getBEAEvents() {
     }
 
     if (data && data.events && Array.isArray(data.events)) {
-      console.log(`✓ Loaded ${data.events.length} BEA events from cache (updated: ${data.last_updated})`);
+      console.log(`✓ Loaded ${data.events.length} BEA events from cache`);
       return data.events;
     }
 
-    console.warn('⚠️  BEA events array is empty or invalid');
+    console.warn('⚠️  BEA events array is empty');
     return [];
     
   } catch (err) {
@@ -91,11 +73,6 @@ export async function getBEAEvents() {
     return [];
   }
 }
-
-// ============================================================
-// FOMC EVENTS
-// Hardcoded - stable enough to not need caching
-// ============================================================
 
 export function getFOMCEvents() {
   const events = FOMC_MEETINGS.map(meeting => ({
@@ -118,16 +95,11 @@ export function getFOMCEvents() {
   return events;
 }
 
-// ============================================================
-// HELPER: Convert event to iCalendar format
-// ============================================================
-
 export function eventToICS(event, calendarId) {
   const lines = [];
   
   lines.push('BEGIN:VEVENT');
   
-  // UID - unique identifier
   const uid = event.uid || `${event.summary}-${event.dtstart.date}@${calendarId}`;
   lines.push(`UID:${uid}`);
   
@@ -135,19 +107,16 @@ export function eventToICS(event, calendarId) {
   if (event.dtstart.isAllDay) {
     lines.push(`DTSTART;VALUE=DATE:${event.dtstart.date.replace(/-/g, '')}`);
   } else if (event.dtstart.timestamp) {
-    // Use timestamp if available (already in UTC)
     const dt = new Date(event.dtstart.timestamp);
     lines.push(`DTSTART:${formatICSDateTime(dt)}`);
   } else if (event.dtstart.time) {
-    // Use date + time
     const dt = new Date(`${event.dtstart.date}T${event.dtstart.time}Z`);
     lines.push(`DTSTART:${formatICSDateTime(dt)}`);
   } else {
-    // Fallback to all-day
     lines.push(`DTSTART;VALUE=DATE:${event.dtstart.date.replace(/-/g, '')}`);
   }
   
-  // DTEND (if exists)
+  // DTEND
   if (event.dtend) {
     if (event.dtend.isAllDay) {
       lines.push(`DTEND;VALUE=DATE:${event.dtend.date.replace(/-/g, '')}`);
@@ -160,28 +129,22 @@ export function eventToICS(event, calendarId) {
     }
   }
   
-  // SUMMARY
   lines.push(`SUMMARY:${escapeICSText(event.summary)}`);
   
-  // DESCRIPTION (if exists)
   if (event.description) {
     lines.push(`DESCRIPTION:${escapeICSText(event.description)}`);
   }
   
-  // DTSTAMP (current time)
   lines.push(`DTSTAMP:${formatICSDateTime(new Date())}`);
-  
   lines.push('END:VEVENT');
   
   return lines.join('\r\n');
 }
 
-// Format date for iCalendar (YYYYMMDDTHHmmssZ)
 function formatICSDateTime(date) {
   return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
 }
 
-// Escape special characters in iCalendar text
 function escapeICSText(text) {
   if (!text) return '';
   return text
@@ -190,10 +153,6 @@ function escapeICSText(text) {
     .replace(/,/g, '\\,')
     .replace(/\n/g, '\\n');
 }
-
-// ============================================================
-// HELPER: Get all economic events based on flags
-// ============================================================
 
 export async function getEconomicEvents(includeFOMC, includeBLS, includeBEA) {
   const allEvents = [];
@@ -213,7 +172,6 @@ export async function getEconomicEvents(includeFOMC, includeBLS, includeBEA) {
     allEvents.push(...beaEvents);
   }
   
-  // Sort by date
   allEvents.sort((a, b) => {
     const dateA = a.dtstart.timestamp || a.dtstart.date;
     const dateB = b.dtstart.timestamp || b.dtstart.date;
@@ -222,10 +180,6 @@ export async function getEconomicEvents(includeFOMC, includeBLS, includeBEA) {
   
   return allEvents;
 }
-
-// ============================================================
-// HELPER: Filter events by date range
-// ============================================================
 
 export function filterEventsByDateRange(events, startDate, endDate) {
   return events.filter(event => {
@@ -236,10 +190,6 @@ export function filterEventsByDateRange(events, startDate, endDate) {
     return eventDate >= start && eventDate <= end;
   });
 }
-
-// ============================================================
-// EXPORTS
-// ============================================================
 
 export default {
   getBLSEvents,

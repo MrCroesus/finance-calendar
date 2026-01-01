@@ -1,0 +1,1267 @@
+[
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, November 2024",
+    "dtstart": {
+      "date": "2025-01-07",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-07T13:30:00.000Z"
+    },
+    "uid": "0fa03438-49ca-472e-a96c-02e3c21ad4b7",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 4th Quarter and Year 2024 (Advance Estimate)",
+    "dtstart": {
+      "date": "2025-01-30",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-30T13:30:00.000Z"
+    },
+    "uid": "2ec758be-402b-4164-9af0-55c3c0edb310",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, December 2024",
+    "dtstart": {
+      "date": "2025-01-31",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-31T13:30:00.000Z"
+    },
+    "uid": "83941c1f-158e-4dd5-a6a6-7f998d784da3",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, December and Annual 2024",
+    "dtstart": {
+      "date": "2025-02-05",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-05T13:30:00.000Z"
+    },
+    "uid": "7fa27047-7bde-4356-9d8b-e58f7e81d491",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Travel and Tourism Satellite Account\\, 2023",
+    "dtstart": {
+      "date": "2025-02-06",
+      "time": "15:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-06T15:00:00.000Z"
+    },
+    "uid": "78fc154d-dc61-4db1-b1e4-2bb90a8f3819",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 4th Quarter and Year 2024 (Second Estimate)",
+    "dtstart": {
+      "date": "2025-02-27",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-27T13:30:00.000Z"
+    },
+    "uid": "fc5ead18-4926-460a-ae67-b04cde0980a5",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, January 2025",
+    "dtstart": {
+      "date": "2025-02-28",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-28T13:30:00.000Z"
+    },
+    "uid": "4c7ac1a8-48ca-4631-a947-5566a1046c6f",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, January 2025",
+    "dtstart": {
+      "date": "2025-03-06",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-06T13:30:00.000Z"
+    },
+    "uid": "c79dda6d-3f29-4f23-83c9-b5a38e1d6127",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions\\, 4th Quarter and Year 2024",
+    "dtstart": {
+      "date": "2025-03-20",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-20T12:30:00.000Z"
+    },
+    "uid": "a0a0d22e-9cc1-4160-bd89-7c14078d95f0",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Investment Position\\, 4th Quarter and Year 2024",
+    "dtstart": {
+      "date": "2025-03-26",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-26T12:30:00.000Z"
+    },
+    "uid": "cffee590-2b21-4241-b9f9-ae815544fb13",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 4th Quarter and Year 2024 (Third Estimate)\\, GDP by Industry\\, and Corporate Profits",
+    "dtstart": {
+      "date": "2025-03-27",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-27T12:30:00.000Z"
+    },
+    "uid": "89e7815c-0521-4baf-a170-d5fe25e959bc",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, February 2025",
+    "dtstart": {
+      "date": "2025-03-28",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-28T12:30:00.000Z"
+    },
+    "uid": "d7460992-5f9c-4b57-a96a-e311cbe952ec",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product by State and Personal Income by State\\, 4th Quarter 2024 and Year 2024 (Preliminary)",
+    "dtstart": {
+      "date": "2025-03-28",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-28T14:00:00.000Z"
+    },
+    "uid": "344ca988-767f-4f02-8b1a-8915aa7544f7",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Space Economy Statellite Account\\, 2023",
+    "dtstart": {
+      "date": "2025-03-31",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-31T14:00:00.000Z"
+    },
+    "uid": "830abe7a-a64a-4d47-815d-1506e0a163f2",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Arts and Cultural Production Satellite Account\\, U.S. and States\\, 2023",
+    "dtstart": {
+      "date": "2025-04-02",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-02T14:00:00.000Z"
+    },
+    "uid": "1598e927-1012-4f58-aed3-42ad37879c05",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, February 2025",
+    "dtstart": {
+      "date": "2025-04-03",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-03T12:30:00.000Z"
+    },
+    "uid": "9a875365-b3a4-49bb-92e9-92442dfa92f6",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Integrated BEA-BLS Industry-Level Production Account\\, 1997-2023",
+    "dtstart": {
+      "date": "2025-04-25",
+      "time": "18:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-25T18:00:00.000Z"
+    },
+    "uid": "0c8eb42c-7920-445f-900a-2524d5b9f556",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 1st Quarter 2025 (Advance Estimate)",
+    "dtstart": {
+      "date": "2025-04-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-30T12:30:00.000Z"
+    },
+    "uid": "2c835975-8b42-4e41-804b-d0b43b8555f6",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, March 2025",
+    "dtstart": {
+      "date": "2025-04-30",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-30T14:00:00.000Z"
+    },
+    "uid": "e6ef8fd3-9873-4d93-8f72-85599aada06c",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, March 2025",
+    "dtstart": {
+      "date": "2025-05-06",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-06T12:30:00.000Z"
+    },
+    "uid": "fd86a227-dbd7-4bcc-9d19-5a962ff04edd",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 1st Quarter 2025 (Second Estimate) and Corporate Profits (Preliminary)",
+    "dtstart": {
+      "date": "2025-05-29",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-29T12:30:00.000Z"
+    },
+    "uid": "3c8555eb-2f3e-425e-833e-9edac5816bd0",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, April 2025",
+    "dtstart": {
+      "date": "2025-05-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-30T12:30:00.000Z"
+    },
+    "uid": "7e0ce78c-e175-48cd-963e-62058f072f42",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, April 2025",
+    "dtstart": {
+      "date": "2025-06-05",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-05T12:30:00.000Z"
+    },
+    "uid": "7badb2ad-1042-484b-858f-2f23a9869d3a",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, Annual Update",
+    "dtstart": {
+      "date": "2025-06-05",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-05T12:30:00.000Z"
+    },
+    "uid": "0ddf5c50-c0f5-41e9-9fc1-9fd9f40f7745",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Marine Economy Satellite Account\\, 2023",
+    "dtstart": {
+      "date": "2025-06-05",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-05T14:00:00.000Z"
+    },
+    "uid": "5ba72c56-f78f-47db-a6b6-054118a53189",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions\\, 1st Quarter 2025 and Annual Update",
+    "dtstart": {
+      "date": "2025-06-24",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-24T12:30:00.000Z"
+    },
+    "uid": "0a163cc5-b571-4621-8020-097aeae0d9ad",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 1st Quarter 2025 (Third Estimate)\\, GDP by Industry\\, and Corporate Profits (Revised)",
+    "dtstart": {
+      "date": "2025-06-26",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-26T12:30:00.000Z"
+    },
+    "uid": "45d70a1c-1483-4b9e-b399-697d8bbac75a",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, May 2025",
+    "dtstart": {
+      "date": "2025-06-27",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-27T12:30:00.000Z"
+    },
+    "uid": "535c5862-74e9-4e6e-8007-a0b0e2379b80",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product by State and Personal Income by State\\, 1st quarter 2025",
+    "dtstart": {
+      "date": "2025-06-27",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-27T14:00:00.000Z"
+    },
+    "uid": "7303f028-32d2-43eb-9ce8-e948d5104e48",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Investment Position\\, 1st Quarter 2025 and Annual Update",
+    "dtstart": {
+      "date": "2025-06-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-30T12:30:00.000Z"
+    },
+    "uid": "6ae1d6b7-2bd1-4be4-ad08-28c67df8623e",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Trade in Value Added\\, 2023",
+    "dtstart": {
+      "date": "2025-06-30",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-30T14:00:00.000Z"
+    },
+    "uid": "d31ffd89-c617-432d-8910-d5c13e20253c",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, May 2025",
+    "dtstart": {
+      "date": "2025-07-03",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-03T12:30:00.000Z"
+    },
+    "uid": "3585aee4-3f02-4bcc-b394-e8dd0cb161da",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. Trade in Services Detailed Tables\\, 2024",
+    "dtstart": {
+      "date": "2025-07-03",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-03T14:00:00.000Z"
+    },
+    "uid": "abea1166-e14a-417c-8202-c29f1af78736",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Prototype Distribution of State Personal Income\\, 2023",
+    "dtstart": {
+      "date": "2025-07-10",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-10T14:00:00.000Z"
+    },
+    "uid": "cc4f36db-ecb1-4fa2-a874-3cf9b12153a8",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "New Foreign Direct Investment in the United States\\, 2024",
+    "dtstart": {
+      "date": "2025-07-11",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-11T12:30:00.000Z"
+    },
+    "uid": "5417ffe1-843f-4ba5-9916-c92f672924a5",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Direct Investment by Country and Industry\\, 2024",
+    "dtstart": {
+      "date": "2025-07-22",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-22T12:30:00.000Z"
+    },
+    "uid": "4ee16e88-87da-41bb-8353-35e773f937d0",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 2nd Quarter 2025 (Advance Estimate)",
+    "dtstart": {
+      "date": "2025-07-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-30T12:30:00.000Z"
+    },
+    "uid": "1d73345c-8c04-4250-a8a0-507384255cf2",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, June 2025",
+    "dtstart": {
+      "date": "2025-07-31",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-31T12:30:00.000Z"
+    },
+    "uid": "26e5197c-103d-4998-939e-d60afbc8f368",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, June 2025",
+    "dtstart": {
+      "date": "2025-08-05",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-05T12:30:00.000Z"
+    },
+    "uid": "e33866d5-fcbe-442c-ac99-5a6d41bd829c",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Distribution of U.S. Personal Income\\, 2024",
+    "dtstart": {
+      "date": "2025-08-07",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-07T14:00:00.000Z"
+    },
+    "uid": "589129fa-14d9-4817-9fb7-312b2e5696c5",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Activities of U.S. Multinational Enterprises\\, 2023",
+    "dtstart": {
+      "date": "2025-08-22",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-22T12:30:00.000Z"
+    },
+    "uid": "d1a366a0-b8d5-4538-a581-467b94436697",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 2nd Quarter 2025 (Second Estimate) and Corporate Profits (Preliminary)",
+    "dtstart": {
+      "date": "2025-08-28",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-28T12:30:00.000Z"
+    },
+    "uid": "12dce614-31b5-44ae-96df-1b2fb2ccacda",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, July 2025",
+    "dtstart": {
+      "date": "2025-08-29",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-29T12:30:00.000Z"
+    },
+    "uid": "bce5277f-75d6-40cf-a328-3cb36a05dfaf",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Experimental Research and Development Satellite Account\\, U.S. and States\\, 2022-2023",
+    "dtstart": {
+      "date": "2025-09-03",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-03T14:00:00.000Z"
+    },
+    "uid": "8517bac1-81fe-485e-a739-fe9d4ae04674",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, July 2025",
+    "dtstart": {
+      "date": "2025-09-04",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-04T12:30:00.000Z"
+    },
+    "uid": "2ea4456e-165f-4437-87ee-e6ccd8348ade",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product for Puerto Rico\\, 2023",
+    "dtstart": {
+      "date": "2025-09-16",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-16T14:00:00.000Z"
+    },
+    "uid": "9996e46e-a597-48e0-9a13-96005a3c401d",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions\\, 2nd Quarter 2025",
+    "dtstart": {
+      "date": "2025-09-23",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-23T12:30:00.000Z"
+    },
+    "uid": "f202ad00-02aa-4c3d-a256-6315344b1785",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 2nd Quarter 2025 (Third Estimate)\\, GDP by Industry\\, Corporate Profits (Revised)\\, and Annual Update",
+    "dtstart": {
+      "date": "2025-09-25",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-25T12:30:00.000Z"
+    },
+    "uid": "9c2e83ea-6057-47eb-b7a6-591e5e187909",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, August 2025",
+    "dtstart": {
+      "date": "2025-09-26",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-26T12:30:00.000Z"
+    },
+    "uid": "b6ae7a1a-a27f-4152-8e90-617d3a7427b0",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product by State and Personal Income by State\\, 2nd quarter 2025 and Personal Consumption Expenditures by State\\, 2024",
+    "dtstart": {
+      "date": "2025-09-26",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-26T14:00:00.000Z"
+    },
+    "uid": "59426f6d-8c52-418a-b7cc-803ab77499ed",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Investment Position\\, 2nd Quarter 2025",
+    "dtstart": {
+      "date": "2025-09-29",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-29T12:30:00.000Z"
+    },
+    "uid": "f9602096-9068-48d3-8fcd-e7d4452c02b7",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, August 2025",
+    "dtstart": {
+      "date": "2025-11-19",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-11-19T13:30:00.000Z"
+    },
+    "uid": "b4caacba-74bd-4f17-99e0-064e19d503f8",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Services Supplied Through Affiliates\\, 2023",
+    "dtstart": {
+      "date": "2025-11-19",
+      "time": "15:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-11-19T15:00:00.000Z"
+    },
+    "uid": "152b72aa-cf75-41c2-a810-de8f0b6581e3",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "To Be Rescheduled: Personal Income and Outlays\\, October 2025",
+    "dtstart": {
+      "date": "2025-11-26",
+      "time": "15:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-11-26T15:00:00.000Z"
+    },
+    "uid": "b318006e-77ab-42d3-8831-7650e3f13c10",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Activities of U.S. Affiliates of Foreign Multinational Enterprises\\, 2023",
+    "dtstart": {
+      "date": "2025-12-05",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-05T13:30:00.000Z"
+    },
+    "uid": "c93468ba-42f9-47ff-94e1-c8341aa931b5",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, September 2025",
+    "dtstart": {
+      "date": "2025-12-05",
+      "time": "15:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-05T15:00:00.000Z"
+    },
+    "uid": "4a8651f1-c712-4649-8b6b-44b213633ae0",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, September 2025",
+    "dtstart": {
+      "date": "2025-12-11",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-11T13:30:00.000Z"
+    },
+    "uid": "61efc5bb-88aa-477d-ac89-dc20276f83c5",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "To Be Rescheduled: Personal Income and Outlays\\, November 2025",
+    "dtstart": {
+      "date": "2025-12-19",
+      "time": "15:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-19T15:00:00.000Z"
+    },
+    "uid": "c76e7d2b-071c-4da5-8fc6-1aabe4e043f1",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 3rd Quarter 2025 (Initial Estimate) and Corporate Profits (Preliminary)",
+    "dtstart": {
+      "date": "2025-12-23",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-23T13:30:00.000Z"
+    },
+    "uid": "75eb47e4-33d7-492e-9581-94e97186b70f",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, October 2025",
+    "dtstart": {
+      "date": "2026-01-08",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-08T13:30:00.000Z"
+    },
+    "uid": "41cc582a-1954-4b6a-a0cf-86db9cbf5d35",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions\\, 3rd Quarter 2025",
+    "dtstart": {
+      "date": "2026-01-14",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-14T13:30:00.000Z"
+    },
+    "uid": "8dc7a79f-87a4-437c-8070-175f41db5e2d",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Investment Position\\, 3rd Quarter 2025",
+    "dtstart": {
+      "date": "2026-01-16",
+      "time": "15:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-16T15:00:00.000Z"
+    },
+    "uid": "98fd2033-a636-4b4a-848f-b77c35642994",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product\\, 3rd Quarter 2025 (Updated Estimate)\\, GDP by Industry\\, and Corporate Profits (Revised)",
+    "dtstart": {
+      "date": "2026-01-22",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-22T13:30:00.000Z"
+    },
+    "uid": "2757488a-8cdc-4c45-a5ad-672c965745f0",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product by State and Personal Income by State\\, 3rd quarter 2025",
+    "dtstart": {
+      "date": "2026-01-23",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-23T13:30:00.000Z"
+    },
+    "uid": "3aabd18d-cf80-4bd6-a0a3-bdaea138b71b",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, November 2025",
+    "dtstart": {
+      "date": "2026-01-29",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-29T13:30:00.000Z"
+    },
+    "uid": "504aa299-6263-4ad3-a4c9-22becb653498",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "To Be Rescheduled: GDP (Advance Estimate)\\, 4th Quarter and Year 2025",
+    "dtstart": {
+      "date": "2026-01-29",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-29T13:30:00.000Z"
+    },
+    "uid": "65598c4f-27ad-457e-9d8c-0fee87d11762",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, December 2025",
+    "dtstart": {
+      "date": "2026-01-29",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-29T13:30:00.000Z"
+    },
+    "uid": "93baf91d-3037-48e3-9f86-cafd43a8327c",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Gross Domestic Product by County and Metropolitan Area and Personal Income by County and Metropolitan Area\\, 2024",
+    "dtstart": {
+      "date": "2026-02-05",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-05T13:30:00.000Z"
+    },
+    "uid": "3db5c614-ae1e-4b5d-9b22-14ee8359ed7e",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, December and Annual 2025",
+    "dtstart": {
+      "date": "2026-02-05",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-05T13:30:00.000Z"
+    },
+    "uid": "70580eba-0418-4a80-a28b-4c6c422e0548",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Real Personal Consumption Expenditures by State and Real Personal Income by State and Metropolitan Area\\, 2024",
+    "dtstart": {
+      "date": "2026-02-19",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-19T13:30:00.000Z"
+    },
+    "uid": "0faa2f17-4bd1-4a95-9a0a-a2747d2f862f",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Second Estimate)\\, 4th Quarter and Year 2025",
+    "dtstart": {
+      "date": "2026-02-26",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-26T13:30:00.000Z"
+    },
+    "uid": "31479289-a33f-402c-bbf0-17b771411bc6",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, January 2026",
+    "dtstart": {
+      "date": "2026-02-26",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-26T13:30:00.000Z"
+    },
+    "uid": "f4e6c58a-5d3a-47b9-8334-386dc1c5df86",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, January 2026",
+    "dtstart": {
+      "date": "2026-03-05",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-05T13:30:00.000Z"
+    },
+    "uid": "f7c74136-f0a4-4c62-a1a5-fb0201a8c63d",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions and Investment Position\\, 4th Quarter and Year 2025",
+    "dtstart": {
+      "date": "2026-03-25",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-25T12:30:00.000Z"
+    },
+    "uid": "b13321ea-1eb6-4536-9f8c-3c44a44b8493",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Third Estimate)\\, Industries\\, Corporate Profits\\, State GDP\\, and State Personal Income\\, 4th Quarter and Year 2025",
+    "dtstart": {
+      "date": "2026-03-27",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-27T12:30:00.000Z"
+    },
+    "uid": "d090346c-ffca-42af-b9e3-d75a0d0b8366",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, February 2026",
+    "dtstart": {
+      "date": "2026-03-27",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-27T12:30:00.000Z"
+    },
+    "uid": "89ee6ef9-539a-4e68-8a40-c71992e78771",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, February 2026",
+    "dtstart": {
+      "date": "2026-04-02",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-02T12:30:00.000Z"
+    },
+    "uid": "d816db43-953a-45b7-95fe-31f618450fe4",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Advance Estimate)\\, 1st Quarter 2026",
+    "dtstart": {
+      "date": "2026-04-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-30T12:30:00.000Z"
+    },
+    "uid": "e2578bf1-6c88-477b-9400-c2d72f1e2ce8",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, March 2026",
+    "dtstart": {
+      "date": "2026-04-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-30T12:30:00.000Z"
+    },
+    "uid": "aed2accb-e610-42dd-be0f-5250b3a34e76",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, March 2026",
+    "dtstart": {
+      "date": "2026-05-05",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-05T12:30:00.000Z"
+    },
+    "uid": "d8c0db3c-6857-40cf-ba68-a8ce5455f0c2",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Second Estimate) and Corporate Profits\\, 1st Quarter 2026",
+    "dtstart": {
+      "date": "2026-05-28",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-28T12:30:00.000Z"
+    },
+    "uid": "52923702-195a-46ef-ab53-9dca9cb77ae7",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, April 2026",
+    "dtstart": {
+      "date": "2026-05-28",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-28T12:30:00.000Z"
+    },
+    "uid": "83b50bcd-a31b-4bdc-a0b7-3fa72b5c06b8",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, April 2026",
+    "dtstart": {
+      "date": "2026-06-09",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-09T12:30:00.000Z"
+    },
+    "uid": "9d86330f-626f-4525-a125-1b3de96a5226",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, Annual Update",
+    "dtstart": {
+      "date": "2026-06-09",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-09T12:30:00.000Z"
+    },
+    "uid": "333c41bd-c91f-48cd-8c93-e61a94a21946",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "New Foreign Direct Investment in the United States\\, 2025",
+    "dtstart": {
+      "date": "2026-06-10",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-10T12:30:00.000Z"
+    },
+    "uid": "62a81b37-3e67-4fdb-be84-2f51318c94ea",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions and Investment Position\\, 1st Quarter 2026 and Annual Update",
+    "dtstart": {
+      "date": "2026-06-24",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-24T12:30:00.000Z"
+    },
+    "uid": "495a93c2-11f0-4a39-bf7d-400be307f469",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Third Estimate)\\, Industries\\, Corporate Profits\\, State GDP\\, and State Personal Income\\, 1st Quarter 2026",
+    "dtstart": {
+      "date": "2026-06-25",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-25T12:30:00.000Z"
+    },
+    "uid": "2c05eec8-f749-4832-bd96-d171e37b5c17",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, May 2026",
+    "dtstart": {
+      "date": "2026-06-25",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-25T12:30:00.000Z"
+    },
+    "uid": "c30d86ae-a3fd-4f8b-87c5-5672b7d16f3e",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, May 2026",
+    "dtstart": {
+      "date": "2026-07-07",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-07T12:30:00.000Z"
+    },
+    "uid": "edbcdeb7-f31c-4b94-859e-7ed6055e8bfb",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. Trade in Services\\, Expanded Detail\\, 2025",
+    "dtstart": {
+      "date": "2026-07-07",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-07T14:00:00.000Z"
+    },
+    "uid": "4706f879-4e57-43fa-ab36-bd29caed1ff0",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Activities of U.S. Affiliates of Foreign Multinational Enterprises\\, 2024",
+    "dtstart": {
+      "date": "2026-07-10",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-10T12:30:00.000Z"
+    },
+    "uid": "4f6f8403-f91b-449a-b5c4-ce559954bee1",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Direct Investment by Country and Industry\\, 2025",
+    "dtstart": {
+      "date": "2026-07-21",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-21T12:30:00.000Z"
+    },
+    "uid": "6be42d23-396b-42d2-b0d0-9eca565d09c5",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Advance Estimate)\\, 2nd Quarter 2026",
+    "dtstart": {
+      "date": "2026-07-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-30T12:30:00.000Z"
+    },
+    "uid": "2989d2ad-202c-48c8-ab87-51eafc234f96",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, June 2026",
+    "dtstart": {
+      "date": "2026-07-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-30T12:30:00.000Z"
+    },
+    "uid": "1c1f3485-7bdc-4174-adfa-d23ee238d78a",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, June 2026",
+    "dtstart": {
+      "date": "2026-08-04",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-04T12:30:00.000Z"
+    },
+    "uid": "ec627fed-777d-4cfa-b128-063926c3058e",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Second Estimate) and Corporate Profits\\, 2nd Quarter 2026",
+    "dtstart": {
+      "date": "2026-08-26",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-26T12:30:00.000Z"
+    },
+    "uid": "84d38d69-e462-4dc2-8f9b-636779fcced5",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, July 2026",
+    "dtstart": {
+      "date": "2026-08-26",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-26T12:30:00.000Z"
+    },
+    "uid": "b279abe1-573d-4a3d-97c5-a2823b52054c",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, July 2026",
+    "dtstart": {
+      "date": "2026-09-03",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-03T12:30:00.000Z"
+    },
+    "uid": "1ef7db54-9b66-40b0-9518-932b3fb76e11",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions and Investment Position\\, 2nd Quarter 2026",
+    "dtstart": {
+      "date": "2026-09-24",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-24T12:30:00.000Z"
+    },
+    "uid": "8be65a47-a2cc-4047-9e77-4fd63015ab5d",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Third Estimate)\\, Industries\\, Corporate Profits\\, State GDP\\, and State Personal Income\\, 2nd Quarter 2026\\; State PCE\\, 2025",
+    "dtstart": {
+      "date": "2026-09-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-30T12:30:00.000Z"
+    },
+    "uid": "1e85b6fb-a00d-4e0e-85dc-b2bde99e580f",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, August 2026",
+    "dtstart": {
+      "date": "2026-09-30",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-30T12:30:00.000Z"
+    },
+    "uid": "e28caae2-24c3-4772-8b33-e2334573db41",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, August 2026",
+    "dtstart": {
+      "date": "2026-10-06",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-06T12:30:00.000Z"
+    },
+    "uid": "e5470114-6282-4e32-894d-61734b5e353e",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Services Supplied Through Affiliates\\, 2024",
+    "dtstart": {
+      "date": "2026-10-06",
+      "time": "14:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-06T14:00:00.000Z"
+    },
+    "uid": "300ed1bc-933c-4c2b-8f89-336010269bbd",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Advance Estimate)\\, 3rd Quarter 2026",
+    "dtstart": {
+      "date": "2026-10-29",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-29T12:30:00.000Z"
+    },
+    "uid": "afcb09fd-b564-4125-88aa-a0b23b358a6f",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, September 2026",
+    "dtstart": {
+      "date": "2026-10-29",
+      "time": "12:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-29T12:30:00.000Z"
+    },
+    "uid": "ff8bd8ad-bb92-43c5-8a30-7e7b5baa33c2",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, September 2026",
+    "dtstart": {
+      "date": "2026-11-04",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-04T13:30:00.000Z"
+    },
+    "uid": "a270c9cd-70a1-48d2-8924-cdebab79dc9a",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Activities of U.S. Multinational Enterprises\\, 2024",
+    "dtstart": {
+      "date": "2026-11-20",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-20T13:30:00.000Z"
+    },
+    "uid": "e2e486f5-b9b2-426b-8e0a-040a31377b60",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Second Estimate) and Corporate Profits\\, 3rd Quarter 2026",
+    "dtstart": {
+      "date": "2026-11-25",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-25T13:30:00.000Z"
+    },
+    "uid": "395d58c3-51cf-44ef-b5bd-d35240623299",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, October 2026",
+    "dtstart": {
+      "date": "2026-11-25",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-25T13:30:00.000Z"
+    },
+    "uid": "c6b23055-287a-4975-bcf7-026c2c6dd8e1",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP by County and Personal Income by County\\, 2025",
+    "dtstart": {
+      "date": "2026-12-02",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-02T13:30:00.000Z"
+    },
+    "uid": "24ad66f8-b973-454d-93c1-9fd339a61d9b",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Trade in Goods and Services\\, October 2026",
+    "dtstart": {
+      "date": "2026-12-08",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-08T13:30:00.000Z"
+    },
+    "uid": "fcb9a791-4080-4f4b-87cf-b5f189e6d1a2",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Real Personal Consumption Expenditures by State and Real PersonalIncome by State\\, 2025",
+    "dtstart": {
+      "date": "2026-12-10",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-10T13:30:00.000Z"
+    },
+    "uid": "1fedfe18-0b6c-4a41-8079-5d07b8e6e6de",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "U.S. International Transactions and Investment Position\\, 3rd Quarter 2026",
+    "dtstart": {
+      "date": "2026-12-18",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-18T13:30:00.000Z"
+    },
+    "uid": "4666e9ef-89c0-422f-b8cb-fef7bd2fe8f6",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "GDP (Third Estimate)\\, Industries\\, Corporate Profits\\, State GDP\\, and State Personal Income\\, 3rd Quarter 2026",
+    "dtstart": {
+      "date": "2026-12-23",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-23T13:30:00.000Z"
+    },
+    "uid": "0a2682b1-41aa-4ec7-992e-07c8bfc1b92e",
+    "description": "www.bea.gov"
+  },
+  {
+    "summary": "Personal Income and Outlays\\, November 2026",
+    "dtstart": {
+      "date": "2026-12-23",
+      "time": "13:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-23T13:30:00.000Z"
+    },
+    "uid": "715d281b-925d-40f9-8400-6a9096a861ec",
+    "description": "www.bea.gov"
+  }
+]

@@ -1,0 +1,2352 @@
+[
+  {
+    "uid": "686fddbb-ec42-468d-8952-17d794e7d145",
+    "dtstart": {
+      "date": "2025-01-03",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-03T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "aa58ef72-3b58-4032-a105-2efa277868a5",
+    "dtstart": {
+      "date": "2025-01-07",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-07T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "d6756258-e8ed-49b6-8d7d-fb471f916d92",
+    "dtstart": {
+      "date": "2025-01-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-10T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "7da221f1-eb56-4aa6-8917-85e7736e160c",
+    "dtstart": {
+      "date": "2025-01-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-14T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "c719ed9f-c9b1-4fbd-8eea-46c73995cab1",
+    "dtstart": {
+      "date": "2025-01-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-15T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "f816222a-fb1e-4543-b8e8-0d3d42b2cf0a",
+    "dtstart": {
+      "date": "2025-01-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-15T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "aed2955b-6f45-4754-b5fd-7d6d30665f01",
+    "dtstart": {
+      "date": "2025-01-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-16T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "1ffdd0fa-d6a7-495c-b585-2ede24ab313d",
+    "dtstart": {
+      "date": "2025-01-17",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-17T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "207711ca-fc9a-4a95-9888-38b95dd7bdc9",
+    "dtstart": {
+      "date": "2025-01-22",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-22T10:00:00.000Z"
+    },
+    "summary": "Usual Weekly Earnings of Wage and Salary Workers"
+  },
+  {
+    "uid": "2b1d7af5-f8c3-42c6-8a47-32fb09f1f385",
+    "dtstart": {
+      "date": "2025-01-28",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-28T10:00:00.000Z"
+    },
+    "summary": "Union Membership (Annual)"
+  },
+  {
+    "uid": "57ce36e8-e0f7-4fd8-8166-741642a97347",
+    "dtstart": {
+      "date": "2025-01-28",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-28T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "c76020f5-e0da-48b3-84ae-d14665ebbdb0",
+    "dtstart": {
+      "date": "2025-01-29",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-29T10:00:00.000Z"
+    },
+    "summary": "Quarterly Data Series on Business Employment Dynamics"
+  },
+  {
+    "uid": "526740d4-187a-4d39-bf38-a2a1dee1dd95",
+    "dtstart": {
+      "date": "2025-01-31",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-01-31T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "ad582092-e369-49da-8591-65a096c32173",
+    "dtstart": {
+      "date": "2025-02-04",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-04T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "7cd5beb6-a725-43b2-8765-6d279d5cb084",
+    "dtstart": {
+      "date": "2025-02-05",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-05T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "be3686dd-02c2-448e-9d08-bfdadcbec9a1",
+    "dtstart": {
+      "date": "2025-02-06",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-06T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "320632fc-f85a-461a-abb0-63636ef8b7dd",
+    "dtstart": {
+      "date": "2025-02-07",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-07T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "f9d49073-0476-4dd3-9a4c-cea588232c45",
+    "dtstart": {
+      "date": "2025-02-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-12T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "7dd020f5-a5ea-435c-a530-3f5e5847d51e",
+    "dtstart": {
+      "date": "2025-02-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-12T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "45b80151-42a9-41ef-8161-9423efe723aa",
+    "dtstart": {
+      "date": "2025-02-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-13T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "84a7b5d3-eba3-492c-9c19-85270f92c3e3",
+    "dtstart": {
+      "date": "2025-02-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-14T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "c3608edb-2472-4175-bd2d-b2879df0c54b",
+    "dtstart": {
+      "date": "2025-02-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-19T10:00:00.000Z"
+    },
+    "summary": "County Employment and Wages"
+  },
+  {
+    "uid": "46e80744-3e11-4eca-9521-5930e6e34041",
+    "dtstart": {
+      "date": "2025-02-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-19T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "24325096-cb6d-4300-8e25-62c49745ad92",
+    "dtstart": {
+      "date": "2025-02-20",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-20T10:00:00.000Z"
+    },
+    "summary": "Major Work Stoppages (Annual)"
+  },
+  {
+    "uid": "010859b3-bf44-4b02-878a-c351e1ac4c0c",
+    "dtstart": {
+      "date": "2025-02-25",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-02-25T10:00:00.000Z"
+    },
+    "summary": "Persons with a Disability: Labor Force Characteristics"
+  },
+  {
+    "uid": "07f8a930-3873-4f4e-9a4d-6678892cba28",
+    "dtstart": {
+      "date": "2025-03-05",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-05T10:00:00.000Z"
+    },
+    "summary": "County Employment and Wages Full Data Update"
+  },
+  {
+    "uid": "40f19431-468e-4366-875d-67106b419eec",
+    "dtstart": {
+      "date": "2025-03-05",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-05T10:00:00.000Z"
+    },
+    "summary": "State Unemployment (Annual)"
+  },
+  {
+    "uid": "02a2e072-bddd-4d5e-95b2-240961bd6513",
+    "dtstart": {
+      "date": "2025-03-06",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-06T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "db3e44eb-4d37-4c5a-8fa2-e9aefd57b971",
+    "dtstart": {
+      "date": "2025-03-07",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-07T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "dddb3b8a-28fa-416e-85e7-943b713ce8e7",
+    "dtstart": {
+      "date": "2025-03-11",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-11T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "62ec6af0-a83c-49a8-916d-5e47aa44c465",
+    "dtstart": {
+      "date": "2025-03-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-12T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "bc3229ed-e645-4d53-80e4-075e9b37be4d",
+    "dtstart": {
+      "date": "2025-03-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-12T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "a1eccffa-76ad-460c-abfc-d72f3433968f",
+    "dtstart": {
+      "date": "2025-03-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-13T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "31426703-e8da-4812-bede-da591b1ad3e5",
+    "dtstart": {
+      "date": "2025-03-14",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-14T10:00:00.000Z"
+    },
+    "summary": "Employer Costs for Employee Compensation"
+  },
+  {
+    "uid": "dcc54cde-9fd5-4e6d-a4e1-75e1e63ae41e",
+    "dtstart": {
+      "date": "2025-03-17",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-17T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "e35bc0d7-075e-4d58-8f57-59c73b1944c6",
+    "dtstart": {
+      "date": "2025-03-18",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-18T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "08f71b8d-4529-47cc-b8fe-ac69e4f5660d",
+    "dtstart": {
+      "date": "2025-03-20",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-20T10:00:00.000Z"
+    },
+    "summary": "Employment Situation of Veterans"
+  },
+  {
+    "uid": "28a030c6-c336-4541-9e1f-2706603069d3",
+    "dtstart": {
+      "date": "2025-03-20",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-20T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "ca567ef7-c323-46a4-b8ba-9e56a30a1ee3",
+    "dtstart": {
+      "date": "2025-03-21",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-21T10:00:00.000Z"
+    },
+    "summary": "Total Factor Productivity"
+  },
+  {
+    "uid": "99802549-b8c2-4477-9155-106f10f5628b",
+    "dtstart": {
+      "date": "2025-03-21",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-21T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "e3014cf6-baa5-4e72-828a-02ca52d28caa",
+    "dtstart": {
+      "date": "2025-03-28",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-03-28T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "f54a05fd-64a7-40cb-86e5-17f0196b4231",
+    "dtstart": {
+      "date": "2025-04-01",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-01T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "6e058d89-02e0-4bac-ac9d-b9d033fe95c6",
+    "dtstart": {
+      "date": "2025-04-02",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-02T10:00:00.000Z"
+    },
+    "summary": "Occupational Employment and Wages"
+  },
+  {
+    "uid": "737a3c28-3d60-4937-bb7f-0f797bb35e53",
+    "dtstart": {
+      "date": "2025-04-04",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-04T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "bba612aa-2c8d-44b4-a058-f099019d128e",
+    "dtstart": {
+      "date": "2025-04-09",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-09T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "c2bc7f36-4f4b-4ceb-a267-ca996951ad31",
+    "dtstart": {
+      "date": "2025-04-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-10T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "eb6eb16f-9202-40b3-8ac4-b897d7c8979d",
+    "dtstart": {
+      "date": "2025-04-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-10T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "c9c07025-773a-47a7-a481-20378a2388db",
+    "dtstart": {
+      "date": "2025-04-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-11T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "949b55a9-2538-461a-b47f-3ea5e302ccef",
+    "dtstart": {
+      "date": "2025-04-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-15T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "2b36974a-4970-4e5c-b3eb-a8dfe42e2249",
+    "dtstart": {
+      "date": "2025-04-16",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-16T10:00:00.000Z"
+    },
+    "summary": "Usual Weekly Earnings of Wage and Salary Workers"
+  },
+  {
+    "uid": "aebe426d-d5da-4c11-8b49-e816e7c14a98",
+    "dtstart": {
+      "date": "2025-04-16",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-16T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "1a5a5300-3a00-4d22-8a51-f59727fafb38",
+    "dtstart": {
+      "date": "2025-04-18",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-18T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "9ff3183a-ee61-4c9f-af0b-5e87f3e73d83",
+    "dtstart": {
+      "date": "2025-04-22",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-22T10:00:00.000Z"
+    },
+    "summary": "College Enrollment and Work Activity of High School Graduates"
+  },
+  {
+    "uid": "12d3cf74-6d6c-465c-8b5b-045049e23f2e",
+    "dtstart": {
+      "date": "2025-04-23",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-23T10:00:00.000Z"
+    },
+    "summary": "Employment Characteristics of Families"
+  },
+  {
+    "uid": "b70994fa-3aba-4fef-a729-9f32ff6a200c",
+    "dtstart": {
+      "date": "2025-04-24",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-24T10:00:00.000Z"
+    },
+    "summary": "Productivity and Costs by Industry: Manufacturing and Mining Industries"
+  },
+  {
+    "uid": "edc8fe01-2d7a-494b-b4bc-f90af20047a8",
+    "dtstart": {
+      "date": "2025-04-29",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-29T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "5635b21e-9a61-464f-a350-009da27b6877",
+    "dtstart": {
+      "date": "2025-04-29",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-29T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "0c257922-4a1e-4da4-ab75-0bd15575c453",
+    "dtstart": {
+      "date": "2025-04-30",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-04-30T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "b94a0cb9-5629-4e47-bc94-2d1f6d0ea60e",
+    "dtstart": {
+      "date": "2025-05-02",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-02T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "75bd8734-5b0c-42d5-a866-070c81b7d6d1",
+    "dtstart": {
+      "date": "2025-05-07",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-07T10:00:00.000Z"
+    },
+    "summary": "Quarterly Data Series on Business Employment Dynamics"
+  },
+  {
+    "uid": "c139cf6b-94dc-4490-9313-13997f54a56c",
+    "dtstart": {
+      "date": "2025-05-08",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-08T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "38b3fba1-7d9c-4489-8c23-25cadc56b242",
+    "dtstart": {
+      "date": "2025-05-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-13T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "901563f0-d29c-4b02-b6b1-e32eb9214b59",
+    "dtstart": {
+      "date": "2025-05-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-13T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "5abcf20b-3aaa-42a1-a3a0-0cc494bf7e26",
+    "dtstart": {
+      "date": "2025-05-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-15T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "563f477d-a0ac-4521-b0eb-c303ac1a1518",
+    "dtstart": {
+      "date": "2025-05-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-16T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "9af152da-22b0-4c07-a3ee-68ae0197299b",
+    "dtstart": {
+      "date": "2025-05-20",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-20T10:00:00.000Z"
+    },
+    "summary": "Labor Force Characteristics of Foreign-born Workers"
+  },
+  {
+    "uid": "ae48bec1-6f88-4d18-bdec-e163f5e8c413",
+    "dtstart": {
+      "date": "2025-05-20",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-20T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "9e4789c1-928d-4304-bf34-df7b21f73559",
+    "dtstart": {
+      "date": "2025-05-21",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-21T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "c78dd174-1932-424a-a4e7-bf203dafa31b",
+    "dtstart": {
+      "date": "2025-05-28",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-28T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "91c0a93c-6810-459e-bfbd-3e7ada82d0a1",
+    "dtstart": {
+      "date": "2025-05-29",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-29T10:00:00.000Z"
+    },
+    "summary": "Productivity and Costs by Industry: Wholesale Trade and Retail Trade"
+  },
+  {
+    "uid": "ca99cf87-0e7e-47c0-a86c-62ab32320d32",
+    "dtstart": {
+      "date": "2025-05-29",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-05-29T10:00:00.000Z"
+    },
+    "summary": "Productivity by State"
+  },
+  {
+    "uid": "7d3199a2-8375-48eb-9b1c-c100d89c5890",
+    "dtstart": {
+      "date": "2025-06-03",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-03T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "c64be047-8565-4877-bdb5-a1e3d9f6355a",
+    "dtstart": {
+      "date": "2025-06-04",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-04T10:00:00.000Z"
+    },
+    "summary": "County Employment and Wages"
+  },
+  {
+    "uid": "6be1fa11-4c22-44c1-8c1a-a9ddbc2f07f2",
+    "dtstart": {
+      "date": "2025-06-05",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-05T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "032aa659-a4be-4a26-a992-d32cc7cabb94",
+    "dtstart": {
+      "date": "2025-06-06",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-06T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "32b110ea-766a-42d9-b939-b7fbf60959e6",
+    "dtstart": {
+      "date": "2025-06-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-11T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "4300c5e6-ef85-4907-b048-b4946f0f775e",
+    "dtstart": {
+      "date": "2025-06-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-11T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "f0e345ac-3368-4d29-8859-473cd99f195a",
+    "dtstart": {
+      "date": "2025-06-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-12T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "3de54d4a-4b04-417f-b8e5-9ba64d2c8bf2",
+    "dtstart": {
+      "date": "2025-06-13",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-13T10:00:00.000Z"
+    },
+    "summary": "Employer Costs for Employee Compensation"
+  },
+  {
+    "uid": "baedeb19-1ec3-4c3e-ae87-205aecd5152a",
+    "dtstart": {
+      "date": "2025-06-17",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-17T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "a929333b-6d07-499d-85c2-3065e7715b1d",
+    "dtstart": {
+      "date": "2025-06-18",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-18T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "f17a2ec5-25c2-4103-abc4-7aa3e5d443d5",
+    "dtstart": {
+      "date": "2025-06-24",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-24T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "8efa9a87-260d-48fb-86b1-9d2a1900303a",
+    "dtstart": {
+      "date": "2025-06-26",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-26T10:00:00.000Z"
+    },
+    "summary": "Productivity and Costs by Industry: Selected Service-Providing Industries"
+  },
+  {
+    "uid": "b327a592-cca6-468e-86e5-611034bd406f",
+    "dtstart": {
+      "date": "2025-06-26",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-06-26T10:00:00.000Z"
+    },
+    "summary": "American Time Use Survey"
+  },
+  {
+    "uid": "34b9f864-ac19-4711-ae1f-2d7030f5d61c",
+    "dtstart": {
+      "date": "2025-07-01",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-01T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "fbfd0935-4ff4-49be-bbb6-572d477e8b5f",
+    "dtstart": {
+      "date": "2025-07-02",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-02T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "0838793b-9451-469d-8d41-11fd89b0c22f",
+    "dtstart": {
+      "date": "2025-07-03",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-03T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "3cdc6fde-58fc-4ea8-a00d-4fc627c12bd6",
+    "dtstart": {
+      "date": "2025-07-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-15T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "a97ed7bf-fdd5-463c-99c0-06f110510393",
+    "dtstart": {
+      "date": "2025-07-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-15T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "d26e35e9-ae52-4f11-bc65-93fe939be0b4",
+    "dtstart": {
+      "date": "2025-07-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-16T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "46a2f6c2-60ad-4c85-8aa2-2bea0450b27c",
+    "dtstart": {
+      "date": "2025-07-17",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-17T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "9056f840-caf6-4856-acfc-760de30c30d7",
+    "dtstart": {
+      "date": "2025-07-18",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-18T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "97d71c72-bd7a-4d03-a0ee-081f6a7190b7",
+    "dtstart": {
+      "date": "2025-07-22",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-22T10:00:00.000Z"
+    },
+    "summary": "Usual Weekly Earnings of Wage and Salary Workers"
+  },
+  {
+    "uid": "8079503a-0534-43e6-94c0-339773e8b597",
+    "dtstart": {
+      "date": "2025-07-23",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-23T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "01675249-eb5f-469c-932f-809e59f24e95",
+    "dtstart": {
+      "date": "2025-07-29",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-29T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "5cd959cd-92cf-4526-8dab-af23bad3e475",
+    "dtstart": {
+      "date": "2025-07-30",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-30T10:00:00.000Z"
+    },
+    "summary": "Quarterly Data Series on Business Employment Dynamics"
+  },
+  {
+    "uid": "eb1cd3df-c1b7-4163-ac61-1c6984d4c184",
+    "dtstart": {
+      "date": "2025-07-30",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-30T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "4bcb5619-c8f3-468f-835c-5a17125c3781",
+    "dtstart": {
+      "date": "2025-07-31",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-07-31T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "3bef5e27-e231-4220-b457-4e947b5a9fd0",
+    "dtstart": {
+      "date": "2025-08-01",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-01T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "30ff2867-427a-4866-ac38-a923697511ba",
+    "dtstart": {
+      "date": "2025-08-07",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-07T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "516abee0-9514-4b81-8076-ffa57ecd5d0d",
+    "dtstart": {
+      "date": "2025-08-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-12T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "85945a2b-e54e-455f-890b-a5b4ff52bd8e",
+    "dtstart": {
+      "date": "2025-08-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-12T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "a0cd4478-04df-46a6-9bcd-54987ecdeed3",
+    "dtstart": {
+      "date": "2025-08-13",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-13T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "88ff1703-273d-42e5-9e6f-15e94225ebad",
+    "dtstart": {
+      "date": "2025-08-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-14T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "45b3f2c1-08e5-46b0-9c0f-0b62dbbbcba1",
+    "dtstart": {
+      "date": "2025-08-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-15T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "de43ac6f-2a69-40de-916c-db618e7d87e7",
+    "dtstart": {
+      "date": "2025-08-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-19T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "f9a0dd23-31c4-45a8-9a45-e91609e7dd7c",
+    "dtstart": {
+      "date": "2025-08-21",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-21T10:00:00.000Z"
+    },
+    "summary": "Summer Youth Labor Force"
+  },
+  {
+    "uid": "d63672d2-80bb-4a36-852b-e311b0bbbb97",
+    "dtstart": {
+      "date": "2025-08-26",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-26T10:00:00.000Z"
+    },
+    "summary": "Number of Jobs, Labor Market Experience, Marital Status, and Health for those Born 1957-1964"
+  },
+  {
+    "uid": "d5e24925-acac-45df-9199-fe3d32414cc5",
+    "dtstart": {
+      "date": "2025-08-27",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-27T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "0cf7034c-dc1d-40ec-9c39-8560da91e7d4",
+    "dtstart": {
+      "date": "2025-08-28",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-28T10:00:00.000Z"
+    },
+    "summary": "Total Factor Productivity for Detailed Industries"
+  },
+  {
+    "uid": "8b089f2f-4d0d-4f4b-bbd8-8a61412051ab",
+    "dtstart": {
+      "date": "2025-08-28",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-08-28T10:00:00.000Z"
+    },
+    "summary": "Employment Projections and Occupational Outlook Handbook"
+  },
+  {
+    "uid": "4c5b3423-9aa8-4a9d-9e00-bab5ddedb761",
+    "dtstart": {
+      "date": "2025-09-03",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-03T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "f2df363f-5675-48de-8508-3deefa9ce947",
+    "dtstart": {
+      "date": "2025-09-04",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-04T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "70a57f0f-f50d-43ec-a660-18b78e5df099",
+    "dtstart": {
+      "date": "2025-09-05",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-05T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "728f3859-ea54-4483-b02b-259e32940852",
+    "dtstart": {
+      "date": "2025-09-09",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-09T10:00:00.000Z"
+    },
+    "summary": "Current Employment Statistics Preliminary Benchmark (National)"
+  },
+  {
+    "uid": "b050a728-4e28-4358-b7c4-27cafcbc5fa9",
+    "dtstart": {
+      "date": "2025-09-09",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-09T10:00:00.000Z"
+    },
+    "summary": "County Employment and Wages"
+  },
+  {
+    "uid": "b6ed3133-2d0e-4a3d-bd9d-17f20285c5ff",
+    "dtstart": {
+      "date": "2025-09-09",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-09T10:00:00.000Z"
+    },
+    "summary": "Current Employment Statistics Preliminary Benchmark (State and Area)"
+  },
+  {
+    "uid": "2e52ecb2-3e93-4546-8bf6-8d83efe790b9",
+    "dtstart": {
+      "date": "2025-09-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-10T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "f83611b0-90a0-47e1-8509-bbe13be6562c",
+    "dtstart": {
+      "date": "2025-09-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-11T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "c5719349-dd96-4fdc-a4ef-11a2453c188b",
+    "dtstart": {
+      "date": "2025-09-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-11T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "03493ba7-642b-4d2e-89c0-d2d0b9dd1ed0",
+    "dtstart": {
+      "date": "2025-09-12",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-12T10:00:00.000Z"
+    },
+    "summary": "Employer Costs for Employee Compensation"
+  },
+  {
+    "uid": "4d41edae-5f0d-4cf9-bc6c-e49f1c0bc552",
+    "dtstart": {
+      "date": "2025-09-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-16T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "85eabf99-1e47-4568-9380-10e3df59de8d",
+    "dtstart": {
+      "date": "2025-09-17",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-17T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "92dbb9ef-8bcf-4612-a89b-be24d19aa608",
+    "dtstart": {
+      "date": "2025-09-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-19T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "06348d20-52bc-430d-9549-c4c485cd0ddc",
+    "dtstart": {
+      "date": "2025-09-25",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-25T10:00:00.000Z"
+    },
+    "summary": "Unpaid Eldercare in the United States"
+  },
+  {
+    "uid": "b9cc2e5b-aea4-4dfb-ac33-a74d84724435",
+    "dtstart": {
+      "date": "2025-09-25",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-25T10:00:00.000Z"
+    },
+    "summary": "Employee Benefits in the United States"
+  },
+  {
+    "uid": "6347afc0-1bc2-46cd-a7ce-74d6b63e23b7",
+    "dtstart": {
+      "date": "2025-09-30",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-30T10:00:00.000Z"
+    },
+    "summary": "People with Health Conditions or Difficulties that Limit Work"
+  },
+  {
+    "uid": "6438d04e-582a-46b3-ac10-7bbb0d491bc2",
+    "dtstart": {
+      "date": "2025-09-30",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-09-30T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "a1ea1155-434f-4956-bcb6-323cc7dc1de3",
+    "dtstart": {
+      "date": "2025-10-01",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-10-01T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "ffed988a-52e0-4697-9c02-278d5ebca419",
+    "dtstart": {
+      "date": "2025-10-24",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-10-24T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "ebf60ac8-4779-4f42-a161-f123e0c01770",
+    "dtstart": {
+      "date": "2025-11-20",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-11-20T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "f3404788-17d1-4bf8-a133-a951fcaba58f",
+    "dtstart": {
+      "date": "2025-11-21",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-11-21T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "d397fe15-0466-41c7-ac1f-cb10ddc715b7",
+    "dtstart": {
+      "date": "2025-11-25",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-11-25T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "3bd62fd8-d6f8-4dd7-b331-37f99a8be68c",
+    "dtstart": {
+      "date": "2025-12-02",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-02T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "fd39e4a3-1d6f-46ec-b2cc-3516fa63b72e",
+    "dtstart": {
+      "date": "2025-12-03",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-03T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "241b39c8-0788-4906-8858-0bfb58494728",
+    "dtstart": {
+      "date": "2025-12-04",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-04T10:00:00.000Z"
+    },
+    "summary": "Usual Weekly Earnings of Wage and Salary Workers"
+  },
+  {
+    "uid": "a671b73f-9cbe-4396-bec2-6e68fb1631e7",
+    "dtstart": {
+      "date": "2025-12-09",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-09T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "432d7bb8-11bc-4c5f-9466-920cce11528b",
+    "dtstart": {
+      "date": "2025-12-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-10T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "5fc7e923-b0dd-44eb-8bd6-ff36940f8e56",
+    "dtstart": {
+      "date": "2025-12-11",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-11T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "a8c5acc6-ba5e-4419-82b5-26c7077a6793",
+    "dtstart": {
+      "date": "2025-12-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-16T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "60f0799d-8229-4868-b381-c6faa41ded16",
+    "dtstart": {
+      "date": "2025-12-17",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-17T10:00:00.000Z"
+    },
+    "summary": "Quarterly Data Series on Business Employment Dynamics"
+  },
+  {
+    "uid": "30ef4cf9-80a9-4a87-bf63-df7349d9f50c",
+    "dtstart": {
+      "date": "2025-12-17",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-17T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "71babc48-c7c1-4ad7-86f5-1ac9680a5980",
+    "dtstart": {
+      "date": "2025-12-18",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-18T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "bbf5023e-64c3-488c-be80-f6eb85dd660e",
+    "dtstart": {
+      "date": "2025-12-18",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-18T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "3425f3ba-577e-4fa0-8c27-af0fad9a15f8",
+    "dtstart": {
+      "date": "2025-12-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-19T10:00:00.000Z"
+    },
+    "summary": "County Employment and Wages"
+  },
+  {
+    "uid": "f0d21a57-45e9-4d13-a381-8f6c153e3657",
+    "dtstart": {
+      "date": "2025-12-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-19T10:00:00.000Z"
+    },
+    "summary": "Total Factor Productivity for Major Industries"
+  },
+  {
+    "uid": "a5884256-0cf8-4691-852c-245b98359d6b",
+    "dtstart": {
+      "date": "2025-12-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-19T10:00:00.000Z"
+    },
+    "summary": "Consumer Expenditures"
+  },
+  {
+    "uid": "a2f443b0-bc6f-4a12-8242-55939101900c",
+    "dtstart": {
+      "date": "2025-12-30",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2025-12-30T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "c060a86f-ef0c-414b-8cf3-28279e179f6e",
+    "dtstart": {
+      "date": "2026-01-07",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-07T10:00:00.000Z"
+    },
+    "summary": "Job Openings and Labor Turnover Survey"
+  },
+  {
+    "uid": "f722a862-111f-4170-be73-bb3c4f34780c",
+    "dtstart": {
+      "date": "2026-01-07",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-07T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "ab72add2-5213-4455-8784-1639958e3adb",
+    "dtstart": {
+      "date": "2026-01-08",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-08T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "817e5910-1fdb-4618-8200-8354cf2d2dd0",
+    "dtstart": {
+      "date": "2026-01-09",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-09T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "8fea6523-5e2d-4981-a37e-8bc44aa65c9c",
+    "dtstart": {
+      "date": "2026-01-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-13T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "422b0ff5-a88d-44e4-8c95-f8be336bf466",
+    "dtstart": {
+      "date": "2026-01-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-13T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "0f85df43-53d7-406a-bf61-f12dfafb357f",
+    "dtstart": {
+      "date": "2026-01-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-14T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "ef9f51ef-a1df-4573-99c6-6dfd3659675a",
+    "dtstart": {
+      "date": "2026-01-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-15T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "99d49a30-b14e-4fc3-b175-19c88e709817",
+    "dtstart": {
+      "date": "2026-01-16",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-16T10:00:00.000Z"
+    },
+    "summary": "Occupational Requirements in the United States"
+  },
+  {
+    "uid": "52969148-02e7-4101-90fe-910d31d01e42",
+    "dtstart": {
+      "date": "2026-01-16",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-16T10:00:00.000Z"
+    },
+    "summary": "Metropolitan Area Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "bfb1893b-6f9a-4862-b72c-891aec9dafe6",
+    "dtstart": {
+      "date": "2026-01-22",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-22T10:00:00.000Z"
+    },
+    "summary": "Employer-Reported Workplace Injuries and Illnesses (Annual)"
+  },
+  {
+    "uid": "61795958-fa6e-43f5-9217-22cfe80ac667",
+    "dtstart": {
+      "date": "2026-01-22",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-22T10:00:00.000Z"
+    },
+    "summary": "Work Experience of the Population (Annual)"
+  },
+  {
+    "uid": "fa704d51-866b-4ba5-a5af-a3d28f5f58ec",
+    "dtstart": {
+      "date": "2026-01-27",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-27T10:00:00.000Z"
+    },
+    "summary": "State Job Openings and Labor Turnover"
+  },
+  {
+    "uid": "d191def5-b3f9-4038-beea-1e3665479251",
+    "dtstart": {
+      "date": "2026-01-27",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-27T10:00:00.000Z"
+    },
+    "summary": "State Employment and Unemployment (Monthly)"
+  },
+  {
+    "uid": "bb34b2e4-b1ba-4570-bc6f-2b2e2269193c",
+    "dtstart": {
+      "date": "2026-01-29",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-29T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "546a8dcf-50d4-449a-8cd7-38e6873bdaf5",
+    "dtstart": {
+      "date": "2026-01-30",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-01-30T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "b2174c5d-6de7-490e-861f-58ff4031b007",
+    "dtstart": {
+      "date": "2026-02-05",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-05T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "84a06501-dbae-4be1-aeb0-6edf3a9ff4af",
+    "dtstart": {
+      "date": "2026-02-06",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-06T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "65520842-5a5a-444c-b70d-7fa583b61107",
+    "dtstart": {
+      "date": "2026-02-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-10T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "42c98bf2-a2a1-49dc-aa06-70fdfdd38d27",
+    "dtstart": {
+      "date": "2026-02-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-10T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "3cb7be2a-1c8e-4231-b510-7da03e987039",
+    "dtstart": {
+      "date": "2026-02-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-11T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "45a09d7b-0a39-4efa-927d-7ea910ff95c0",
+    "dtstart": {
+      "date": "2026-02-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-11T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "e9fcd156-00cc-437d-82b7-bec17ce88209",
+    "dtstart": {
+      "date": "2026-02-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-12T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "5c79201b-8d02-4dba-95bb-cc8f4a49d582",
+    "dtstart": {
+      "date": "2026-02-18",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-18T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "4570faf4-11c3-4440-82f9-49ba205519f5",
+    "dtstart": {
+      "date": "2026-02-19",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-19T10:00:00.000Z"
+    },
+    "summary": "Census of Fatal Occupational Injuries"
+  },
+  {
+    "uid": "488b0e51-0a67-48f0-8708-80066321b8ac",
+    "dtstart": {
+      "date": "2026-02-26",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-02-26T10:00:00.000Z"
+    },
+    "summary": "Quarterly Data Series on Business Employment Dynamics"
+  },
+  {
+    "uid": "67e36c22-eb98-49d9-ba2a-8ca8a9178a7d",
+    "dtstart": {
+      "date": "2026-03-05",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-05T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "32f3e4e1-f12e-40f1-b4d4-10dd1f3a47ca",
+    "dtstart": {
+      "date": "2026-03-06",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-06T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "20aaab62-b4c5-4ed4-b866-8dfbdfe9166c",
+    "dtstart": {
+      "date": "2026-03-10",
+      "time": "10:00:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-10T10:00:00.000Z"
+    },
+    "summary": "County Employment and Wages"
+  },
+  {
+    "uid": "8cc08470-6ed6-4075-a2dc-fffe12dd9edb",
+    "dtstart": {
+      "date": "2026-03-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-11T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "e1f77e12-2e1a-454b-9eee-db4d1c5242f3",
+    "dtstart": {
+      "date": "2026-03-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-11T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "b7f8a0e2-566b-4f9f-9552-63c8b59073a0",
+    "dtstart": {
+      "date": "2026-03-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-12T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "5ebe5bfc-38db-4465-8282-15ba8e3d22aa",
+    "dtstart": {
+      "date": "2026-03-17",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-03-17T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "859a76a2-c5b1-4774-87dd-bca8c0784d64",
+    "dtstart": {
+      "date": "2026-04-03",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-03T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "ae1dcb08-90a7-4b88-8cd6-6afcea76471b",
+    "dtstart": {
+      "date": "2026-04-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-10T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "496961a9-6f79-4287-aacb-583626c67201",
+    "dtstart": {
+      "date": "2026-04-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-10T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "656e0831-cd2e-4261-8b09-1906446090b9",
+    "dtstart": {
+      "date": "2026-04-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-14T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "c9aa852c-2ae1-487d-b8df-336f198b0e4c",
+    "dtstart": {
+      "date": "2026-04-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-15T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "ae6299b9-a05c-4f6c-9127-a4aae89cbc76",
+    "dtstart": {
+      "date": "2026-04-30",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-04-30T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "5300dfbc-fb76-4f12-bbf7-a67ec4733f87",
+    "dtstart": {
+      "date": "2026-05-07",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-07T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "abead8a1-2b92-465f-9d2f-4919f5da1353",
+    "dtstart": {
+      "date": "2026-05-08",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-08T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "11215bab-14f6-4a53-aff8-d258bd279808",
+    "dtstart": {
+      "date": "2026-05-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-12T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "49d48afb-5c76-4106-89b5-25b7f580d244",
+    "dtstart": {
+      "date": "2026-05-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-12T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "7e053abb-6826-4efe-b4c4-5bae721b59e2",
+    "dtstart": {
+      "date": "2026-05-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-13T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "16f5a9c1-1f46-4cb4-a19d-b984581c6912",
+    "dtstart": {
+      "date": "2026-05-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-05-14T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "0c2c46da-25e6-43bc-ab25-b4fc21d696f6",
+    "dtstart": {
+      "date": "2026-06-04",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-04T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "f8123013-4634-4952-a9d3-d17399688a5f",
+    "dtstart": {
+      "date": "2026-06-05",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-05T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "45ce2ab6-7068-4452-9a78-0bfbb4cbeb68",
+    "dtstart": {
+      "date": "2026-06-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-10T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "7e0d7836-c367-4be1-adb5-f0c34840c61b",
+    "dtstart": {
+      "date": "2026-06-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-10T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "9844d9e3-e6e5-48e7-bd86-cc2b2dcb327f",
+    "dtstart": {
+      "date": "2026-06-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-11T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "4a28c1d3-41d8-4d6e-97ef-57b593fd88be",
+    "dtstart": {
+      "date": "2026-06-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-06-16T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "4c0bbb70-6895-456e-97c0-79c1e2de5e5e",
+    "dtstart": {
+      "date": "2026-07-02",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-02T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "268ac210-e0e5-4566-b5bb-8bdaec87b831",
+    "dtstart": {
+      "date": "2026-07-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-14T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "d1905b28-0e39-47cd-aab3-3630873ce3d6",
+    "dtstart": {
+      "date": "2026-07-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-14T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "d308bedc-70b6-4eca-a636-2384d2d5b740",
+    "dtstart": {
+      "date": "2026-07-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-15T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "79368a3b-c74f-405d-9e4a-8ff16e47ea96",
+    "dtstart": {
+      "date": "2026-07-17",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-17T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "bb2af9f5-3f12-4f51-a418-cd842c04b631",
+    "dtstart": {
+      "date": "2026-07-31",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-07-31T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "2a1a3573-79b4-46e0-8449-7211eb3eb9ce",
+    "dtstart": {
+      "date": "2026-08-06",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-06T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "4297d06d-d663-4993-86cf-4d783de1903e",
+    "dtstart": {
+      "date": "2026-08-07",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-07T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "eb487190-67b3-4b25-a826-b68921b56a2f",
+    "dtstart": {
+      "date": "2026-08-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-12T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "b62943b9-c6c7-4a43-b65b-b54f38078109",
+    "dtstart": {
+      "date": "2026-08-12",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-12T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "bcce7612-38e5-4456-bdec-552697ea013b",
+    "dtstart": {
+      "date": "2026-08-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-13T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "9c4781b2-845d-499c-b663-da24c372ec2d",
+    "dtstart": {
+      "date": "2026-08-18",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-08-18T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "f8737c47-1bf9-44fa-9425-f07c8c008503",
+    "dtstart": {
+      "date": "2026-09-03",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-03T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "f0a254a4-39bb-4376-9ab1-7e71050e036d",
+    "dtstart": {
+      "date": "2026-09-04",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-04T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "0512f803-c86c-4119-ac41-f5746ade73fe",
+    "dtstart": {
+      "date": "2026-09-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-10T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "423a057a-f925-4c0b-a555-ef2f599115bb",
+    "dtstart": {
+      "date": "2026-09-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-11T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "dc51d5bd-d5b2-4f52-a78c-98d58a2278a4",
+    "dtstart": {
+      "date": "2026-09-11",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-11T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "d8a469d7-461c-4018-94bc-7b33eac5fd45",
+    "dtstart": {
+      "date": "2026-09-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-09-16T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "407624fb-7e89-4467-951d-c78172bc0010",
+    "dtstart": {
+      "date": "2026-10-02",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-02T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "adb2c2f7-1d9b-43c2-8fc6-aca829485da5",
+    "dtstart": {
+      "date": "2026-10-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-14T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "0e2f3daa-3022-4bc8-a9a3-99073cf8b0da",
+    "dtstart": {
+      "date": "2026-10-14",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-14T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "e3208a11-5016-4be7-a250-d3974ff34f27",
+    "dtstart": {
+      "date": "2026-10-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-15T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "9932e1d4-a88d-45c9-bc0d-5f762b857a02",
+    "dtstart": {
+      "date": "2026-10-16",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-16T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "dd02828e-5524-4d19-bdee-524408b6e18d",
+    "dtstart": {
+      "date": "2026-10-30",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-10-30T08:30:00.000Z"
+    },
+    "summary": "Employment Cost Index"
+  },
+  {
+    "uid": "29c22478-5deb-45e7-8bc6-7fbc4f3d0bbe",
+    "dtstart": {
+      "date": "2026-11-05",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-05T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "d01049ff-7a04-427f-bcfe-be5d727caca0",
+    "dtstart": {
+      "date": "2026-11-06",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-06T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "09f29d28-58c7-4d69-a406-5c42531b71bd",
+    "dtstart": {
+      "date": "2026-11-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-10T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "768a2daa-eee7-40c3-a0cd-9929a4ff6bd2",
+    "dtstart": {
+      "date": "2026-11-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-10T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "6d35a69e-084b-42e0-b687-23ad65e4cb1f",
+    "dtstart": {
+      "date": "2026-11-13",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-13T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "97440d0f-ae3a-40b3-b240-d9fa5d35bac9",
+    "dtstart": {
+      "date": "2026-11-17",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-11-17T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  },
+  {
+    "uid": "325dcec5-aad1-4f1c-abe1-c0acb5380385",
+    "dtstart": {
+      "date": "2026-12-04",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-04T08:30:00.000Z"
+    },
+    "summary": "Employment Situation"
+  },
+  {
+    "uid": "ed286afe-c744-435b-b831-1136ed4556f3",
+    "dtstart": {
+      "date": "2026-12-08",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-08T08:30:00.000Z"
+    },
+    "summary": "Productivity and Costs"
+  },
+  {
+    "uid": "511eae1e-ffd4-41f0-b7ce-829067d5e486",
+    "dtstart": {
+      "date": "2026-12-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-10T08:30:00.000Z"
+    },
+    "summary": "Consumer Price Index"
+  },
+  {
+    "uid": "e4c7be50-ed0e-436a-9d45-6b8fbcda5bef",
+    "dtstart": {
+      "date": "2026-12-10",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-10T08:30:00.000Z"
+    },
+    "summary": "Real Earnings"
+  },
+  {
+    "uid": "a6c86510-55d5-4e16-a40a-50e7b1e314c3",
+    "dtstart": {
+      "date": "2026-12-15",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-15T08:30:00.000Z"
+    },
+    "summary": "Producer Price Index"
+  },
+  {
+    "uid": "a2039b0d-4455-4108-b2b8-93dae2ae7a3e",
+    "dtstart": {
+      "date": "2026-12-17",
+      "time": "08:30:00",
+      "isAllDay": false,
+      "timestamp": "2026-12-17T08:30:00.000Z"
+    },
+    "summary": "U.S. Import and Export Price Indexes"
+  }
+]

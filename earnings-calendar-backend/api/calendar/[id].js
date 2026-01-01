@@ -1,6 +1,4 @@
 // api/calendar/[id].js
-// Generates .ics calendar feed for a given calendar ID
-
 import { supabase } from '../../lib/supabase.js';
 import { getEconomicEvents, eventToICS } from '../../lib/economic-calendar.js';
 import yahooFinance from 'yahoo-finance2';
@@ -11,10 +9,6 @@ export default async function handler(req, res) {
   try {
     console.log(`📅 Generating calendar for ID: ${id}`);
 
-    // ============================================================
-    // Step 1: Get calendar preferences from database
-    // ============================================================
-    
     const { data: calendar, error: calendarError } = await supabase
       .from('calendars')
       .select('*')
@@ -28,10 +22,6 @@ export default async function handler(req, res) {
 
     console.log(`✓ Found calendar with ${calendar.tickers?.length || 0} tickers`);
 
-    // ============================================================
-    // Step 2: Fetch earnings dates for all tickers
-    // ============================================================
-    
     const earningsEvents = [];
     const tickers = calendar.tickers || [];
 
@@ -43,7 +33,7 @@ export default async function handler(req, res) {
           earningsEvents.push({
             dtstart: {
               date: earningsDate.date,
-              time: earningsDate.time || '13:00:00', // Default to 1 PM UTC if no time
+              time: earningsDate.time || '13:00:00',
               isAllDay: !earningsDate.time,
               timestamp: earningsDate.timestamp
             },
@@ -54,16 +44,11 @@ export default async function handler(req, res) {
         }
       } catch (err) {
         console.error(`Error fetching earnings for ${ticker}:`, err.message);
-        // Continue with other tickers even if one fails
       }
     }
 
     console.log(`✓ Found ${earningsEvents.length} earnings events`);
 
-    // ============================================================
-    // Step 3: Fetch economic calendar events
-    // ============================================================
-    
     const economicEvents = await getEconomicEvents(
       calendar.include_fomc,
       calendar.include_bls,
@@ -72,13 +57,8 @@ export default async function handler(req, res) {
 
     console.log(`✓ Found ${economicEvents.length} economic events`);
 
-    // ============================================================
-    // Step 4: Combine all events
-    // ============================================================
-    
     const allEvents = [...earningsEvents, ...economicEvents];
 
-    // Sort by date
     allEvents.sort((a, b) => {
       const dateA = a.dtstart.timestamp || a.dtstart.date;
       const dateB = b.dtstart.timestamp || b.dtstart.date;
@@ -87,10 +67,6 @@ export default async function handler(req, res) {
 
     console.log(`✓ Total events: ${allEvents.length}`);
 
-    // ============================================================
-    // Step 5: Generate ICS file
-    // ============================================================
-    
     const icsEvents = allEvents.map(event => eventToICS(event, id));
 
     const icsContent = [
@@ -106,13 +82,9 @@ export default async function handler(req, res) {
       'END:VCALENDAR'
     ].join('\r\n');
 
-    // ============================================================
-    // Step 6: Return ICS file
-    // ============================================================
-    
     res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
     res.setHeader('Content-Disposition', `inline; filename="calendar-${id}.ics"`);
-    res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
+    res.setHeader('Cache-Control', 'public, max-age=3600');
     
     return res.status(200).send(icsContent);
 
@@ -125,20 +97,14 @@ export default async function handler(req, res) {
   }
 }
 
-// ============================================================
-// Helper: Get earnings date for a ticker
-// ============================================================
-
 async function getEarningsDate(ticker) {
   try {
-    // Check cache first
     const cached = await getEarningsFromCache(ticker);
     
     if (cached) {
       const cacheAge = Date.now() - new Date(cached.last_updated).getTime();
       const SIXTY_DAYS = 60 * 24 * 60 * 60 * 1000;
       
-      // If cache is less than 60 days old, use it
       if (cacheAge < SIXTY_DAYS) {
         console.log(`  ✓ ${ticker}: Using cached earnings date`);
         return {
@@ -148,7 +114,6 @@ async function getEarningsDate(ticker) {
         };
       }
       
-      // If cache is old, serve it but refresh in background
       console.log(`  ⚠️  ${ticker}: Cache expired, refreshing...`);
       refreshEarningsCache(ticker).catch(err => {
         console.error(`Background refresh failed for ${ticker}:`, err);
@@ -161,7 +126,6 @@ async function getEarningsDate(ticker) {
       };
     }
 
-    // Not in cache, fetch from Yahoo Finance
     console.log(`  📡 ${ticker}: Fetching from Yahoo Finance...`);
     return await fetchAndCacheEarnings(ticker);
 
@@ -170,10 +134,6 @@ async function getEarningsDate(ticker) {
     return null;
   }
 }
-
-// ============================================================
-// Get earnings from cache
-// ============================================================
 
 async function getEarningsFromCache(ticker) {
   try {
@@ -184,7 +144,6 @@ async function getEarningsFromCache(ticker) {
       .single();
 
     if (error) {
-      // Not found is expected, not an error
       if (error.code === 'PGRST116') return null;
       throw error;
     }
@@ -196,13 +155,8 @@ async function getEarningsFromCache(ticker) {
   }
 }
 
-// ============================================================
-// Fetch earnings from Yahoo Finance and cache
-// ============================================================
-
 async function fetchAndCacheEarnings(ticker) {
   try {
-    // Fetch quote data which includes earnings date
     const quote = await yahooFinance.quote(ticker);
     
     if (!quote) {
@@ -222,7 +176,6 @@ async function fetchAndCacheEarnings(ticker) {
 
     const companyName = quote.longName || quote.shortName || ticker;
 
-    // Cache the result
     const { error } = await supabase
       .from('earnings_cache')
       .upsert({
@@ -251,10 +204,6 @@ async function fetchAndCacheEarnings(ticker) {
     return null;
   }
 }
-
-// ============================================================
-// Refresh cache in background (fire and forget)
-// ============================================================
 
 async function refreshEarningsCache(ticker) {
   try {
