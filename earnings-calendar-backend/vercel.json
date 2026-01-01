@@ -1,5 +1,13 @@
 {
   "buildCommand": "npm run fetch-calendars",
+  "installCommand": "npm install",
+  "framework": null,
+  "outputDirectory": null,
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "headers": [
     {
       "source": "/api/(.*)",
