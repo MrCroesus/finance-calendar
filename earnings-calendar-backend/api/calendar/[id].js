@@ -30,15 +30,32 @@ export default async function handler(req, res) {
         const earningsDate = await getEarningsDate(ticker);
         
         if (earningsDate) {
+          // Determine time and description based on timing
+          let eventTime, eventDescription;
+          
+          if (earningsDate.timing === 'BMO') {
+            // Before Market Open - 7:00 AM ET = 12:00 PM UTC
+            eventTime = '12:00:00';
+            eventDescription = `${earningsDate.companyName || ticker} earnings release (Before Market Open)`;
+          } else if (earningsDate.timing === 'AMC') {
+            // After Market Close - 4:00 PM ET = 9:00 PM UTC
+            eventTime = '21:00:00';
+            eventDescription = `${earningsDate.companyName || ticker} earnings release (After Market Close)`;
+          } else {
+            // Unknown timing - use 1:00 PM UTC as default
+            eventTime = '13:00:00';
+            eventDescription = `${earningsDate.companyName || ticker} earnings release`;
+          }
+
           earningsEvents.push({
             dtstart: {
               date: earningsDate.date,
-              time: earningsDate.time || '13:00:00',
-              isAllDay: !earningsDate.time,
-              timestamp: earningsDate.timestamp
+              time: eventTime,
+              isAllDay: false,
+              timestamp: `${earningsDate.date}T${eventTime}Z`
             },
             summary: `${ticker} Earnings`,
-            description: `${earningsDate.companyName || ticker} earnings release`,
+            description: eventDescription,
             uid: `earnings-${ticker}-${earningsDate.date}@${id}`
           });
         }
@@ -110,7 +127,8 @@ async function getEarningsDate(ticker) {
         return {
           date: cached.earnings_date.split('T')[0],
           timestamp: cached.earnings_date,
-          companyName: cached.company_name
+          companyName: cached.company_name,
+          timing: cached.earnings_timing || null
         };
       }
       
@@ -122,7 +140,8 @@ async function getEarningsDate(ticker) {
       return {
         date: cached.earnings_date.split('T')[0],
         timestamp: cached.earnings_date,
-        companyName: cached.company_name
+        companyName: cached.company_name,
+        timing: cached.earnings_timing || null
       };
     }
 
@@ -175,6 +194,21 @@ async function fetchAndCacheEarnings(ticker) {
     }
 
     const companyName = quote.longName || quote.shortName || ticker;
+    
+    // Determine earnings timing (BMO/AMC)
+    // Yahoo Finance sometimes provides this in earningsTimestamp hour
+    // If hour is before 12 PM UTC (7 AM ET), it's BMO
+    // If hour is after 8 PM UTC (3 PM ET), it's AMC
+    let timing = null;
+    const hour = earningsDate.getUTCHours();
+    
+    if (hour >= 4 && hour < 14) {
+      // Morning hours UTC = Before Market Open ET
+      timing = 'BMO';
+    } else if (hour >= 20 || hour < 4) {
+      // Evening hours UTC = After Market Close ET
+      timing = 'AMC';
+    }
 
     const { error } = await supabase
       .from('earnings_cache')
@@ -182,6 +216,7 @@ async function fetchAndCacheEarnings(ticker) {
         ticker: ticker.toUpperCase(),
         company_name: companyName,
         earnings_date: earningsDate.toISOString(),
+        earnings_timing: timing,
         last_updated: new Date().toISOString()
       }, {
         onConflict: 'ticker'
@@ -190,13 +225,14 @@ async function fetchAndCacheEarnings(ticker) {
     if (error) {
       console.error(`Failed to cache ${ticker}:`, error);
     } else {
-      console.log(`  ✓ ${ticker}: Cached earnings date`);
+      console.log(`  ✓ ${ticker}: Cached earnings date (${timing || 'unknown timing'})`);
     }
 
     return {
       date: earningsDate.toISOString().split('T')[0],
       timestamp: earningsDate.toISOString(),
-      companyName: companyName
+      companyName: companyName,
+      timing: timing
     };
 
   } catch (error) {
@@ -222,6 +258,15 @@ async function refreshEarningsCache(ticker) {
     }
 
     const companyName = quote.longName || quote.shortName || ticker;
+    
+    let timing = null;
+    const hour = earningsDate.getUTCHours();
+    
+    if (hour >= 4 && hour < 14) {
+      timing = 'BMO';
+    } else if (hour >= 20 || hour < 4) {
+      timing = 'AMC';
+    }
 
     await supabase
       .from('earnings_cache')
@@ -229,6 +274,7 @@ async function refreshEarningsCache(ticker) {
         ticker: ticker.toUpperCase(),
         company_name: companyName,
         earnings_date: earningsDate.toISOString(),
+        earnings_timing: timing,
         last_updated: new Date().toISOString()
       }, {
         onConflict: 'ticker'

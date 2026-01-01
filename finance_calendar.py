@@ -274,6 +274,7 @@ if __name__ == "__main__":
       new_event(service, summary, description, start_dateTime, end_dateTime)
 
   # BEA (GDP) info is scraped: https://fred.stlouisfed.org/releases/calendar?od=asc&rid=53&ve=2020-12-31&view=year&vs=2020-01-01
+  # or https://www.bea.gov/news/schedule/ics/online-calendar-subscription.ics
   gdp_dates_url = urlopen('https://fred.stlouisfed.org/releases/calendar?od=asc&rid=53&ve=2020-12-31&view=year&vs=2020-01-01')
   gdp_dates = BeautifulSoup(gdp_dates_url, 'html.parser')
   gdp_dates_table = gdp_dates.find_all('table')

@@ -75,21 +75,29 @@ export async function getBEAEvents() {
 }
 
 export function getFOMCEvents() {
-  const events = FOMC_MEETINGS.map(meeting => ({
-    dtstart: { 
-      date: meeting.startDate, 
-      isAllDay: true 
-    },
-    dtend: { 
-      date: meeting.endDate, 
-      isAllDay: true 
-    },
-    summary: 'FOMC Meeting',
-    description: meeting.hasSEP 
-      ? 'Federal Reserve FOMC Meeting - Interest rate decision & Summary of Economic Projections (SEP)'
-      : 'Federal Reserve FOMC Meeting - Interest rate decision',
-    uid: `fomc-${meeting.startDate}@earnings-calendar`
-  }));
+  const events = FOMC_MEETINGS.map(meeting => {
+    // For multi-day all-day events, iCalendar DTEND is exclusive
+    // So we need to add 1 day to the end date
+    const endDate = new Date(meeting.endDate);
+    endDate.setDate(endDate.getDate() + 1);
+    const endDateStr = endDate.toISOString().split('T')[0];
+
+    return {
+      dtstart: { 
+        date: meeting.startDate, 
+        isAllDay: true 
+      },
+      dtend: { 
+        date: endDateStr, 
+        isAllDay: true 
+      },
+      summary: 'FOMC Meeting',
+      description: meeting.hasSEP 
+        ? 'Federal Reserve FOMC Meeting - Interest rate decision & Summary of Economic Projections (SEP)'
+        : 'Federal Reserve FOMC Meeting - Interest rate decision',
+      uid: `fomc-${meeting.startDate}@earnings-calendar`
+    };
+  });
 
   console.log(`✓ Loaded ${events.length} FOMC events`);
   return events;
