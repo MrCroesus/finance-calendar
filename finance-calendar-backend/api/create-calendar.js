@@ -51,11 +51,15 @@ export default async function handler(req, res) {
     }
 
     // Return calendar ID and subscription URL
-    const baseUrl = process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}`
-      : req.headers.host 
-        ? `https://${req.headers.host}`
-        : 'http://localhost:3000';
+    // Use production domain for main deployment, otherwise use VERCEL_URL
+    const isProduction = process.env.VERCEL_ENV === 'production';
+    const baseUrl = isProduction 
+      ? 'https://finance-calendar-api.vercel.app'
+      : process.env.VERCEL_URL 
+        ? `https://${process.env.VERCEL_URL}`
+        : req.headers.host 
+          ? `https://${req.headers.host}`
+          : 'http://localhost:3000';
 
     return res.status(201).json({
       id: data.id,
