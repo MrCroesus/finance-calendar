@@ -164,11 +164,11 @@ function formatICSDateTime(date) {
 
 function escapeICSText(text) {
   if (!text) return '';
+  // Only escape semicolons and newlines for iCalendar format
+  // Commas and backslashes don't need escaping in most calendar apps
   return text
-    .replace(/\\/g, '\\\\')
-    .replace(/;/g, '\\;')
-    .replace(/,/g, '\\,')
-    .replace(/\n/g, '\\n');
+    .replace(/\n/g, '\\n')
+    .replace(/;/g, '\\;');
 }
 
 export async function getEconomicEvents(includeFOMC, includeBLS, includeBEA) {
