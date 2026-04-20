@@ -10,5 +10,9 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
     "yahoo-finance2": "^2.11.3"
+  },
+  "scripts": {
+    "fetch-calendars": "node scripts/fetch-economic-calendars.js",
+    "fetch-stocks": "node scripts/fetch-stocks.js"
   }
 }

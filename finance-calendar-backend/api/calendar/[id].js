@@ -40,18 +40,19 @@ export default async function handler(req, res) {
 
     for (const ticker of tickers) {
       try {
+        console.log(`📊 Fetching earnings for ${ticker}...`);
         const earningsDate = await getEarningsDate(ticker);
         
         if (earningsDate) {
+          console.log(`  ✓ Found earnings for ${ticker}:`, earningsDate);
+          
           // Determine time based on timing info from Yahoo Finance
           let eventTime, eventDescription;
           
           if (earningsDate.timing === 'BMO') {
-            // Before Market Open - 7:00 AM ET = 12:00 PM UTC
             eventTime = '12:00:00';
             eventDescription = `${earningsDate.companyName || ticker} earnings release (Before Market Open)`;
           } else if (earningsDate.timing === 'AMC') {
-            // After Market Close - 4:00 PM ET = 9:00 PM UTC
             eventTime = '21:00:00';
             eventDescription = `${earningsDate.companyName || ticker} earnings release (After Market Close)`;
           } else {
@@ -65,6 +66,7 @@ export default async function handler(req, res) {
               description: `${earningsDate.companyName || ticker} earnings release`,
               uid: `earnings-${ticker}-${earningsDate.date}@${id}`
             });
+            console.log(`  → Added as all-day event (no timing info)`);
             continue;
           }
 
@@ -80,9 +82,12 @@ export default async function handler(req, res) {
             description: eventDescription,
             uid: `earnings-${ticker}-${earningsDate.date}@${id}`
           });
+          console.log(`  → Added as timed event (${earningsDate.timing})`);
+        } else {
+          console.warn(`  ⚠️  No earnings date found for ${ticker}`);
         }
       } catch (err) {
-        console.error(`Error fetching earnings for ${ticker}:`, err.message);
+        console.error(`❌ Error fetching earnings for ${ticker}:`, err.message);
       }
     }
 
