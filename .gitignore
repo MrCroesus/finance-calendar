@@ -6,3 +6,4 @@ token.json
 finance-calendar-backend/node_modules
 finance-calendar-frontend/node_modules
 finance-calendar-backend/.env
+.DS_Store
