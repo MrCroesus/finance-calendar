@@ -127,10 +127,9 @@ export default function StockTickerManager() {
           
           if (cacheData && !error) {
             const cacheAge = Date.now() - new Date(cacheData.updated_at).getTime();
-            const oneDayInMs = 24 * 60 * 60 * 1000;
-            
-            // Use cache if less than 1 day old
-            if (cacheAge < oneDayInMs) {
+            const twoDaysInMs = 2 * 24 * 60 * 60 * 1000; // 2-day cache tolerance
+
+            if (cacheAge < twoDaysInMs) {
               console.log(`Loaded ${cacheData.stocks.length} stocks from Supabase cache (${Math.round(cacheAge / 1000 / 60)} minutes old)`);
               setAllStocks(cacheData.stocks);
               setIsLoadingStocks(false);
