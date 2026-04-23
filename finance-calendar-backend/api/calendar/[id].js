@@ -19,8 +19,16 @@ export default async function handler(req, res) {
 
   const { id } = req.query;
 
+  // DEBUG MODE - add ?debug=true to URL
+  const debugMode = req.query.debug === 'true';
+  const debugLogs = [];
+  const debugLog = (msg) => {
+    console.log(msg);
+    if (debugMode) debugLogs.push(msg);
+  };
+
   try {
-    console.log(`📅 Generating calendar for ID: ${id}`);
+    debugLog(`📅 Generating calendar for ID: ${id}`);
 
     const { data: calendar, error: calendarError } = await supabase
       .from('calendars')
@@ -29,22 +37,22 @@ export default async function handler(req, res) {
       .single();
 
     if (calendarError || !calendar) {
-      console.error('Calendar not found:', id);
-      return res.status(404).json({ error: 'Calendar not found' });
+      debugLog(`❌ Calendar not found: ${id}`);
+      return res.status(404).json({ error: 'Calendar not found', debug: debugLogs });
     }
 
-    console.log(`✓ Found calendar with ${calendar.tickers?.length || 0} tickers`);
+    debugLog(`✓ Found calendar with ${calendar.tickers?.length || 0} tickers`);
 
     const earningsEvents = [];
     const tickers = calendar.tickers || [];
 
     for (const ticker of tickers) {
       try {
-        console.log(`📊 Fetching earnings for ${ticker}...`);
-        const earningsDate = await getEarningsDate(ticker);
+        debugLog(`📊 Fetching earnings for ${ticker}...`);
+        const earningsDate = await getEarningsDate(ticker, debugLog);
         
         if (earningsDate) {
-          console.log(`  ✓ Found earnings for ${ticker}:`, earningsDate);
+          debugLog(`  ✓ Found earnings for ${ticker}: ${earningsDate.date}, timing: ${earningsDate.timing}`);
           
           // Determine time based on timing info from Yahoo Finance
           let eventTime, eventDescription;
@@ -128,6 +136,20 @@ export default async function handler(req, res) {
       'END:VCALENDAR'
     ].join('\r\n');
 
+    // If debug mode, return JSON instead of ICS
+    if (debugMode) {
+      return res.status(200).json({
+        debug: debugLogs,
+        calendarInfo: {
+          id: calendar.id,
+          tickers: calendar.tickers,
+          earningsEventsCount: earningsEvents.length,
+          economicEventsCount: economicEvents.length,
+          totalEvents: allEvents.length
+        }
+      });
+    }
+
     res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
     res.setHeader('Content-Disposition', `inline; filename="finance-calendar.ics"`);
     res.setHeader('Cache-Control', 'public, max-age=3600');
@@ -143,7 +165,7 @@ export default async function handler(req, res) {
   }
 }
 
-async function getEarningsDate(ticker) {
+async function getEarningsDate(ticker, debugLog = console.log) {
   try {
     const cached = await getEarningsFromCache(ticker);
     
@@ -151,8 +173,10 @@ async function getEarningsDate(ticker) {
       const cacheAge = Date.now() - new Date(cached.last_updated).getTime();
       const SIXTY_DAYS = 60 * 24 * 60 * 60 * 1000;
       
+      debugLog(`  📦 Cache for ${ticker}: ${Math.round(cacheAge / 1000 / 60 / 60 / 24)} days old (limit: 60 days)`);
+      
       if (cacheAge < SIXTY_DAYS) {
-        console.log(`  ✓ ${ticker}: Using cached earnings date`);
+        debugLog(`  ✓ ${ticker}: Using cached earnings date`);
         return {
           date: cached.earnings_date.split('T')[0],
           timestamp: cached.earnings_date,
@@ -161,11 +185,12 @@ async function getEarningsDate(ticker) {
         };
       }
       
-      console.log(`  ⚠️  ${ticker}: Cache expired, refreshing...`);
-      refreshEarningsCache(ticker).catch(err => {
-        console.error(`Background refresh failed for ${ticker}:`, err);
+      debugLog(`  ⚠️  ${ticker}: Cache expired, refreshing...`);
+      refreshEarningsCache(ticker, debugLog).catch(err => {
+        debugLog(`❌ Background refresh failed for ${ticker}: ${err.message}`);
       });
       
+      // Return stale cache while refreshing
       return {
         date: cached.earnings_date.split('T')[0],
         timestamp: cached.earnings_date,
@@ -174,11 +199,11 @@ async function getEarningsDate(ticker) {
       };
     }
 
-    console.log(`  📡 ${ticker}: Fetching from Yahoo Finance...`);
-    return await fetchAndCacheEarnings(ticker);
+    debugLog(`  📡 ${ticker}: No cache, fetching from Yahoo Finance...`);
+    return await fetchAndCacheEarnings(ticker, debugLog);
 
   } catch (error) {
-    console.error(`Error getting earnings for ${ticker}:`, error);
+    debugLog(`❌ Error getting earnings for ${ticker}: ${error.message}`);
     return null;
   }
 }
