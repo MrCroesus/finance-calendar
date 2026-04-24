@@ -27,6 +27,60 @@ export default async function handler(req, res) {
     if (debugMode) debugLogs.push(msg);
   };
 
+  // Handle PUT request to update calendar
+  if (req.method === 'PUT') {
+    return handleUpdateCalendar(req, res, id);
+  }
+
+  // Handle GET request to generate ICS
+  if (req.method === 'GET') {
+    return handleGenerateICS(req, res, id, debugLog, debugMode, debugLogs);
+  }
+
+  return res.status(405).json({ error: 'Method not allowed' });
+}
+
+// Update calendar preferences
+async function handleUpdateCalendar(req, res, id) {
+  try {
+    const { tickers, include_fomc, include_bls, include_bea } = req.body;
+
+    if (!Array.isArray(tickers)) {
+      return res.status(400).json({ error: 'tickers must be an array' });
+    }
+
+    const { data, error } = await supabase
+      .from('calendars')
+      .update({
+        tickers: tickers,
+        include_fomc: include_fomc ?? false,
+        include_bls: include_bls ?? false,
+        include_bea: include_bea ?? false
+      })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error || !data) {
+      console.error('Update error:', error);
+      return res.status(404).json({ error: 'Calendar not found' });
+    }
+
+    return res.status(200).json({
+      message: 'Calendar updated successfully',
+      calendar: data
+    });
+  } catch (error) {
+    console.error('Error updating calendar:', error);
+    return res.status(500).json({ 
+      error: 'Failed to update calendar',
+      message: error.message 
+    });
+  }
+}
+
+// Generate ICS file
+async function handleGenerateICS(req, res, id, debugLog, debugMode, debugLogs) {
   try {
     debugLog(`📅 Generating calendar for ID: ${id}`);
 
@@ -38,7 +92,10 @@ export default async function handler(req, res) {
 
     if (calendarError || !calendar) {
       debugLog(`❌ Calendar not found: ${id}`);
-      return res.status(404).json({ error: 'Calendar not found', debug: debugLogs });
+      if (debugMode) {
+        return res.status(404).json({ error: 'Calendar not found', debug: debugLogs });
+      }
+      return res.status(404).json({ error: 'Calendar not found' });
     }
 
     debugLog(`✓ Found calendar with ${calendar.tickers?.length || 0} tickers`);
@@ -52,9 +109,8 @@ export default async function handler(req, res) {
         const earningsDate = await getEarningsDate(ticker, debugLog);
         
         if (earningsDate) {
-          debugLog(`  ✓ Found earnings for ${ticker}: ${earningsDate.date}, timing: ${earningsDate.timing}`);
+          debugLog(`  ✓ Found earnings for ${ticker}: ${earningsDate.date}, timing: ${earningsDate.timing || 'unknown'}`);
           
-          // Determine time based on timing info from Yahoo Finance
           let eventTime, eventDescription;
           
           if (earningsDate.timing === 'BMO') {
@@ -64,7 +120,6 @@ export default async function handler(req, res) {
             eventTime = '21:00:00';
             eventDescription = `${earningsDate.companyName || ticker} earnings release (After Market Close)`;
           } else {
-            // Unknown timing - make it all-day event
             earningsEvents.push({
               dtstart: {
                 date: earningsDate.date,
@@ -74,11 +129,10 @@ export default async function handler(req, res) {
               description: `${earningsDate.companyName || ticker} earnings release`,
               uid: `earnings-${ticker}-${earningsDate.date}@${id}`
             });
-            console.log(`  → Added as all-day event (no timing info)`);
+            debugLog(`  → Added as all-day event (no timing info)`);
             continue;
           }
 
-          // Timed event (BMO or AMC)
           earningsEvents.push({
             dtstart: {
               date: earningsDate.date,
@@ -90,16 +144,16 @@ export default async function handler(req, res) {
             description: eventDescription,
             uid: `earnings-${ticker}-${earningsDate.date}@${id}`
           });
-          console.log(`  → Added as timed event (${earningsDate.timing})`);
+          debugLog(`  → Added as timed event (${earningsDate.timing})`);
         } else {
-          console.warn(`  ⚠️  No earnings date found for ${ticker}`);
+          debugLog(`  ⚠️  No earnings date found for ${ticker}`);
         }
       } catch (err) {
-        console.error(`❌ Error fetching earnings for ${ticker}:`, err.message);
+        debugLog(`❌ Error fetching earnings for ${ticker}: ${err.message}`);
       }
     }
 
-    console.log(`✓ Found ${earningsEvents.length} earnings events`);
+    debugLog(`✓ Found ${earningsEvents.length} earnings events`);
 
     const economicEvents = await getEconomicEvents(
       calendar.include_fomc,
@@ -107,7 +161,7 @@ export default async function handler(req, res) {
       calendar.include_bea
     );
 
-    console.log(`✓ Found ${economicEvents.length} economic events`);
+    debugLog(`✓ Found ${economicEvents.length} economic events`);
 
     const allEvents = [...earningsEvents, ...economicEvents];
 
@@ -117,24 +171,7 @@ export default async function handler(req, res) {
       return new Date(dateA) - new Date(dateB);
     });
 
-    console.log(`✓ Total events: ${allEvents.length}`);
-
-    const icsEvents = allEvents
-      .map(event => eventToICS(event, id))
-      .filter(ics => ics !== ''); // Remove any invalid events
-
-    const icsContent = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Earnings Calendar//Finance Events//EN',
-      'CALSCALE:GREGORIAN',
-      'METHOD:PUBLISH',
-      'X-WR-CALNAME:Finance Calendar',
-      'X-WR-CALDESC:Stock earnings and economic events',
-      'X-WR-TIMEZONE:UTC',
-      ...icsEvents,
-      'END:VCALENDAR'
-    ].join('\r\n');
+    debugLog(`✓ Total events: ${allEvents.length}`);
 
     // If debug mode, return JSON instead of ICS
     if (debugMode) {
@@ -150,6 +187,23 @@ export default async function handler(req, res) {
       });
     }
 
+    const icsEvents = allEvents
+      .map(event => eventToICS(event, id))
+      .filter(ics => ics !== '');
+
+    const icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Earnings Calendar//Finance Events//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'X-WR-CALNAME:Finance Calendar',
+      'X-WR-CALDESC:Stock earnings and economic events',
+      'X-WR-TIMEZONE:UTC',
+      ...icsEvents,
+      'END:VCALENDAR'
+    ].join('\r\n');
+
     res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
     res.setHeader('Content-Disposition', `inline; filename="finance-calendar.ics"`);
     res.setHeader('Cache-Control', 'public, max-age=3600');
@@ -158,6 +212,13 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error generating calendar:', error);
+    if (debugMode) {
+      return res.status(500).json({ 
+        error: 'Failed to generate calendar',
+        message: error.message,
+        debug: debugLogs
+      });
+    }
     return res.status(500).json({ 
       error: 'Failed to generate calendar',
       message: error.message 
@@ -185,12 +246,16 @@ async function getEarningsDate(ticker, debugLog = console.log) {
         };
       }
       
-      debugLog(`  ⚠️  ${ticker}: Cache expired, refreshing...`);
-      refreshEarningsCache(ticker, debugLog).catch(err => {
-        debugLog(`❌ Background refresh failed for ${ticker}: ${err.message}`);
-      });
+      debugLog(`  ⚠️  ${ticker}: Cache expired (${Math.round(cacheAge / 1000 / 60 / 60 / 24)} days), fetching fresh...`);
       
-      // Return stale cache while refreshing
+      // CHANGED: Don't do background refresh, fetch synchronously
+      const fresh = await fetchAndCacheEarnings(ticker, debugLog);
+      if (fresh) {
+        return fresh;
+      }
+      
+      // If fetch failed, return stale cache
+      debugLog(`  ⚠️  ${ticker}: Fresh fetch failed, using stale cache`);
       return {
         date: cached.earnings_date.split('T')[0],
         timestamp: cached.earnings_date,
@@ -228,41 +293,38 @@ async function getEarningsFromCache(ticker) {
   }
 }
 
-async function fetchAndCacheEarnings(ticker) {
+async function fetchAndCacheEarnings(ticker, debugLog = console.log) {
   try {
-    // Use quoteSummary with calendarEvents module for earnings dates
+    debugLog(`    🔍 Calling Yahoo Finance quoteSummary for ${ticker}...`);
+    
     const data = await yahooFinance.quoteSummary(ticker, {
       modules: ['calendarEvents', 'price']
     });
     
     if (!data || !data.calendarEvents) {
-      console.warn(`  ⚠️  ${ticker}: No calendar events data`);
+      debugLog(`    ❌ ${ticker}: No calendar events data from Yahoo`);
       return null;
     }
 
     const earnings = data.calendarEvents.earnings;
     
     if (!earnings || !earnings.earningsDate || earnings.earningsDate.length === 0) {
-      console.warn(`  ⚠️  ${ticker}: No earnings date available`);
+      debugLog(`    ❌ ${ticker}: No earnings date in calendar events`);
       return null;
     }
 
-    // earningsDate is an array, usually with 1-2 dates (range)
-    // Use the first date
     const earningsDate = earnings.earningsDate[0];
     
-    // Validate the date
     if (!earningsDate || 
         isNaN(earningsDate.getTime()) || 
         earningsDate.getFullYear() < 2000 || 
         earningsDate.getFullYear() > 2100) {
-      console.warn(`  ⚠️  ${ticker}: Invalid earnings date`);
+      debugLog(`    ❌ ${ticker}: Invalid earnings date (year: ${earningsDate?.getFullYear()})`);
       return null;
     }
 
     const companyName = data.price?.longName || data.price?.shortName || ticker;
     
-    // Determine timing from hour
     let timing = null;
     const hour = earningsDate.getUTCHours();
     
@@ -271,6 +333,8 @@ async function fetchAndCacheEarnings(ticker) {
     } else if (hour >= 20 || hour < 4) {
       timing = 'AMC';
     }
+
+    debugLog(`    💾 Saving to Supabase: ${ticker}, date: ${earningsDate.toISOString()}, timing: ${timing}`);
 
     const { error } = await supabase
       .from('earnings_cache')
@@ -285,9 +349,10 @@ async function fetchAndCacheEarnings(ticker) {
       });
 
     if (error) {
+      debugLog(`    ❌ Failed to cache ${ticker} in Supabase: ${error.message}`);
       console.error(`Failed to cache ${ticker}:`, error);
     } else {
-      console.log(`  ✓ ${ticker}: Cached earnings date (${timing || 'unknown timing'})`);
+      debugLog(`    ✅ ${ticker}: Successfully cached in Supabase`);
     }
 
     return {
@@ -298,54 +363,8 @@ async function fetchAndCacheEarnings(ticker) {
     };
 
   } catch (error) {
+    debugLog(`    ❌ Yahoo Finance fetch failed for ${ticker}: ${error.message}`);
     console.error(`Yahoo Finance fetch failed for ${ticker}:`, error.message);
     return null;
-  }
-}
-
-async function refreshEarningsCache(ticker) {
-  try {
-    const data = await yahooFinance.quoteSummary(ticker, {
-      modules: ['calendarEvents', 'price']
-    });
-    
-    if (!data?.calendarEvents?.earnings?.earningsDate?.[0]) return;
-
-    const earningsDate = data.calendarEvents.earnings.earningsDate[0];
-
-    // Validate date
-    if (!earningsDate || 
-        isNaN(earningsDate.getTime()) || 
-        earningsDate.getFullYear() < 2000 || 
-        earningsDate.getFullYear() > 2100) {
-      return;
-    }
-
-    const companyName = data.price?.longName || data.price?.shortName || ticker;
-    
-    let timing = null;
-    const hour = earningsDate.getUTCHours();
-    
-    if (hour >= 4 && hour < 14) {
-      timing = 'BMO';
-    } else if (hour >= 20 || hour < 4) {
-      timing = 'AMC';
-    }
-
-    await supabase
-      .from('earnings_cache')
-      .upsert({
-        ticker: ticker.toUpperCase(),
-        company_name: companyName,
-        earnings_date: earningsDate.toISOString(),
-        earnings_timing: timing,
-        last_updated: new Date().toISOString()
-      }, {
-        onConflict: 'ticker'
-      });
-
-    console.log(`  ✓ ${ticker}: Background refresh complete`);
-  } catch (error) {
-    console.error(`Background refresh error for ${ticker}:`, error);
   }
 }
