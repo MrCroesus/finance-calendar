@@ -1,18 +1,17 @@
 {
-  "name": "earnings-calendar-backend",
+  "name": "finance-calendar-backend",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vercel dev",
     "fetch-calendars": "node scripts/fetch-economic-calendars.js",
-    "build": "npm run fetch-calendars"
+    "fetch-stocks": "node scripts/fetch-stocks.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
-    "yahoo-finance2": "^2.11.3"
+    "@supabase/supabase-js": "^2.47.10",
+    "yahoo-finance2": "^3.10.2"
   },
-  "scripts": {
-    "fetch-calendars": "node scripts/fetch-economic-calendars.js",
-    "fetch-stocks": "node scripts/fetch-stocks.js"
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
