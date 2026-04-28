@@ -1,7 +1,9 @@
 // api/calendar/[id].js
 import { supabase } from '../../lib/supabase.js';
 import { getEconomicEvents, eventToICS } from '../../lib/economic-calendar.js';
-import yahooFinance from 'yahoo-finance2';
+import YahooFinance from 'yahoo-finance2';
+
+const yahooFinance = new YahooFinance();
 
 export default async function handler(req, res) {
   // Handle preflight OPTIONS request

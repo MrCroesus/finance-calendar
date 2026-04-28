@@ -1,7 +1,9 @@
 // scripts/refresh-watched-earnings.js
 import { createClient } from '@supabase/supabase-js';
-import yahooFinance from 'yahoo-finance2';
+import YahooFinance from 'yahoo-finance2';
 import fs from 'fs/promises';
+
+const yahooFinance = new YahooFinance();
 
 // Load env
 if (!process.env.SUPABASE_URL) {
@@ -103,7 +105,7 @@ async function refreshWatchedEarnings() {
           refreshed++;
         }
 
-        // Rate limit: wait 2 seconds between requests to avoid "Too Many Requests"
+        // Rate limit: wait 2 seconds between requests
         await new Promise(resolve => setTimeout(resolve, 2000));
 
       } catch (error) {
@@ -111,23 +113,10 @@ async function refreshWatchedEarnings() {
         console.log(`     Error type: ${error.constructor.name}`);
         console.log(`     Error message: ${error.message}`);
         
-        // If there's a response, show it
-        if (error.result) {
-          console.log(`     Yahoo response:`, JSON.stringify(error.result).substring(0, 200));
-        }
-        
         failed++;
         
-        // Only wait if it's actually a rate limit
-        if (error.message.includes('Too Many Requests') || 
-            error.message.includes('429') ||
-            error.message.includes('Rate limit')) {
-          console.log('  ⏳ Rate limited, waiting 30 seconds...');
-          await new Promise(resolve => setTimeout(resolve, 30000));
-        } else {
-          // For other errors, just wait 2 seconds and continue
-          await new Promise(resolve => setTimeout(resolve, 2000));
-        }
+        // Wait 2 seconds before next ticker
+        await new Promise(resolve => setTimeout(resolve, 2000));
       }
     }
 
