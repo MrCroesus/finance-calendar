@@ -12,8 +12,9 @@ export async function refreshStocks() {
   const key = process.env.FINNHUB_API_KEY;
   if (!key) throw new Error('FINNHUB_API_KEY not set');
 
-  const results = await Promise.all(
-    ['US', 'OTC'].map(async (exchange) => {
+  const exchanges = ['US', 'OTC'];
+  const settled = await Promise.allSettled(
+    exchanges.map(async (exchange) => {
       const res = await fetch(
         `https://finnhub.io/api/v1/stock/symbol?exchange=${exchange}&token=${key}`
       );
@@ -22,19 +23,35 @@ export async function refreshStocks() {
     })
   );
 
-  const seen = new Set();
-  const validTypes = ['Common Stock', 'ADR', 'GDR'];
-  const stocks = results
-    .flat()
-    .filter((s) => {
-      if (!s.symbol || !s.description || seen.has(s.symbol)) return false;
-      if (!validTypes.includes(s.type)) return false;
-      seen.add(s.symbol);
-      return true;
-    })
-    .map((s) => ({ symbol: s.symbol, description: s.description, type: s.type }));
+  const failures = settled
+    .filter((r) => r.status === 'rejected')
+    .map((r) => r.reason.message);
+  if (failures.length === exchanges.length) throw new Error(failures.join('; '));
 
-  if (stocks.length === 0) throw new Error('Finnhub returned no stocks');
+  const validTypes = ['Common Stock', 'ADR', 'GDR'];
+  const merged = new Map();
+
+  // Partial failure: keep previously cached stocks so the failed exchange isn't wiped
+  if (failures.length > 0) {
+    const { data: existing } = await supabase
+      .from('stock_cache')
+      .select('stocks')
+      .eq('cache_key', 'all_stocks')
+      .single();
+    (existing?.stocks || []).forEach((s) => merged.set(s.symbol, s));
+  }
+
+  settled
+    .filter((r) => r.status === 'fulfilled')
+    .forEach((r) =>
+      r.value.forEach((s) => {
+        if (!s.symbol || !s.description || !validTypes.includes(s.type)) return;
+        merged.set(s.symbol, { symbol: s.symbol, description: s.description, type: s.type });
+      })
+    );
+
+  const stocks = [...merged.values()];
+  if (stocks.length === 0) throw new Error('No stocks to cache');
 
   await supabase.from('stock_cache').delete().eq('cache_key', 'all_stocks');
   const { error } = await supabase.from('stock_cache').insert({
@@ -44,7 +61,7 @@ export async function refreshStocks() {
   });
   if (error) throw error;
 
-  return { count: stocks.length };
+  return { count: stocks.length, warnings: failures };
 }
 
 // ---------------------------------------------------------------
