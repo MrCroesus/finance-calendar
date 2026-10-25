@@ -2,6 +2,12 @@
   "buildCommand": "npm run fetch-calendars",
   "installCommand": "npm install",
   "outputDirectory": "public",
+  "crons": [
+    { "path": "/api/cron/refresh", "schedule": "0 2 * * *" }
+  ],
+  "functions": {
+    "api/cron/refresh.js": { "maxDuration": 300 }
+  },
   "headers": [
     {
       "source": "/api/(.*)",
